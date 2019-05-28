@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2041
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoDat", "AlgoDat\AlgoDat.csproj", "{EF5BC25D-3B38-430E-BF2C-BA52CAC1256E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF5BC25D-3B38-430E-BF2C-BA52CAC1256E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF5BC25D-3B38-430E-BF2C-BA52CAC1256E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF5BC25D-3B38-430E-BF2C-BA52CAC1256E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF5BC25D-3B38-430E-BF2C-BA52CAC1256E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81D0B082-0FD1-4BE9-BF30-E562B45AC2B1}
+	EndGlobalSection
+EndGlobal
