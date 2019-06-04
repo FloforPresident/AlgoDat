@@ -8,5 +8,9 @@ namespace AlgoDat
 {
     interface IDictonary
     {
+        bool Search(int elem);
+        bool insert(int elem);
+        bool delete(int elem);
+        void print();
     }
 }
