@@ -66,14 +66,20 @@ namespace AlgoDat
                 if(parent.wert > elem)
                 {
                     if (parent.links == null)
+                    {
                         parent.links = new Blatt(elem);
+                        return;
+                    }
                     else
                         parent = parent.links;
                 }
                 else if (parent.wert < elem)
                 {
                     if (parent.rechts == null)
+                    {
                         parent.rechts = new Blatt(elem);
+                        return;
+                    }
                     else
                         parent = parent.rechts;
                 }

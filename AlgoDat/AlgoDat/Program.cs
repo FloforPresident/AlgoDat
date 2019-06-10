@@ -16,6 +16,15 @@ namespace AlgoDat
                 array[i] = i * 2;
             }
             SetUnsortedArray test1 = new SetUnsortedArray();
+
+
+            //BinSearchTree Test
+            BinSearchTree testTree = new BinSearchTree();
+            testTree.Insert(9);
+            testTree.Insert(4);
+            testTree.Insert(10);
+            testTree.Insert(2);
+            Console.WriteLine(testTree.Search(1));
         }
     }
 }
