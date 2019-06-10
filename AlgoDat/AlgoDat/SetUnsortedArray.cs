@@ -8,5 +8,9 @@ namespace AlgoDat
 {
     class SetUnsortedArray : MultiSetUnsortedArray, ISet
     {
+        public override bool Insert(int a)
+        {
+            return false;
+        }
     }
 }

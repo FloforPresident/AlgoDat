@@ -8,5 +8,10 @@ namespace AlgoDat
 {
     abstract class SupportArray
     {
+        public void Print(int a)
+        {
+            
+        }
+        public int[] myArray = new int[50];
     }
 }

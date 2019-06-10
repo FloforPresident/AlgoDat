@@ -8,5 +8,6 @@ namespace AlgoDat
 {
     interface ISet : IMultiSet
     {
+        new bool Insert(int elem);
     }
 }
