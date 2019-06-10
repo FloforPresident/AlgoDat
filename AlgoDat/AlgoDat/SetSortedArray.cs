@@ -8,5 +8,9 @@ namespace AlgoDat
 {
     class SetSortedArray: MultiSetSortedArray, ISetSorted
     {
+        public bool Search(int elem) { return false; }
+        public bool Insert(int elem) { return false; }
+        public bool Delete(int elem) { return false; }
+        public void Print(int elem) { }
     }
 }
