@@ -86,6 +86,6 @@ namespace AlgoDat
             }
         }
         public bool Delete(int elem) { return false; }
-        public void Print(int elem) { }
+        public void Print() { }
     }
 }

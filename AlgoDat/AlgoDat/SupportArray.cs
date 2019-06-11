@@ -8,10 +8,15 @@ namespace AlgoDat
 {
     abstract class SupportArray
     {
-        public void Print(int a)
+        public int[] myArray = new int[50]; //array declaration
+
+        public void Print()
         {
-            
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                Console.Write(myArray[i] + " ");
+            }
+            Console.WriteLine();
         }
-        public int[] myArray = new int[50];
     }
 }
