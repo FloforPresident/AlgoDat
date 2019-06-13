@@ -148,7 +148,8 @@ namespace AlgoDat
             testTree.Insert(4);
             testTree.Insert(10);
             testTree.Insert(2);
-            Console.WriteLine(testTree.Search(1));
+
+            testTree.Print();
         }
     }
 }
