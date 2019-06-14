@@ -15,51 +15,56 @@ namespace AlgoDat
             {
                 if (myArray[i] == elem)
                 {
-                    Console.WriteLine("gefunden");
+                    Console.WriteLine("found");
                     return true;
                 }
             }
-            Console.WriteLine("nicht gefunden");
+            Console.WriteLine("not found");
             return false;
+        }
+
+        protected int SearchIndex(int elem)
+        {
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                if(myArray[i] == elem)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         public override bool Insert(int newElem)
         {
-            for (int i = 0; i < myArray.Length; i++)
+            int i = SearchIndex(0);
+            if(i >= 0 && newElem > 0)
             {
-                if(myArray[i] == 0)
-                {
-                    myArray[i] = newElem;
-                    Console.WriteLine("inserted");
-                    return true;
-                }
+                myArray[i] = newElem;
+                Console.WriteLine("inserted");
+                return true;
             }
-            Console.WriteLine("Array is full");
-            return false;
+            else
+            {
+                Console.WriteLine("not inserted");
+                return false;
+            }
+                
         }
-
 
         public override bool Delete(int elem)
         {
             if(!Search(elem))
             {
-                Console.WriteLine("not found");
                 return false;
             }
             else
             {
-                for (int i = 0; i < myArray.Length; i++)
-                {
-                    if(myArray[i] == elem)
-                    {
-                        myArray[i] = 0;
-                        Console.WriteLine("deleted");
-                        return true;
-                    }
-                }
+                int i = SearchIndex(elem);
+                myArray[i] = 0;
+                Console.WriteLine("deleted");
+                return true;
             }
-            Console.WriteLine("ERROR");
-            return false;
         }
     }
 }

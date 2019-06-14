@@ -12,20 +12,17 @@ namespace AlgoDat
         {
             if (!Search(newElem))
             {
-                for (int i = 0; i < myArray.Length; i++)
+                int i = SearchIndex(0);
+
+                if (i >= 0)
                 {
-                    if (myArray[i] == 0)
-                    {
-                        myArray[i] = newElem;
-                        Console.WriteLine("inserted");
-                        return true;
-                    }
+                    myArray[i] = newElem;
+                    Console.WriteLine("inserted");
+                    return true;
                 }
-                Console.WriteLine("array is full");
-                return false;
             }
-            Console.WriteLine("already in array");
+            Console.WriteLine("not inserted");
             return false;
-        }
+        }        
     }
 }

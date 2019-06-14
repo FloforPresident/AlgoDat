@@ -10,100 +10,116 @@ namespace AlgoDat
     {
         static void Main(string[] args)
         {
-            ////Haupt Bibliotheksprogramm
-            //IDictonary myArray = null;
+            //Haupt Bibliotheksprogramm
+            IDictonary myArray = null;
+            
+            //which kind of array
+            bool libraryRuns = true;
 
-            ////which kind of array
-            //bool libraryRuns = true;
+            Console.WriteLine("\n---- MULTISET UNSORTED ----" +
+                "\n1. Multiset unsorted list\n" +
+                "2. Multiset unsorted array\n" +
+                "\n------ SET UNSORTED -------\n" +
+                "3. Set unsorted list\n" +
+                "4. Set unsorted array\n" +
+                "\n----- MULTISET SORTED -----\n" +
+                "5. Set sorted list\n" +
+                "6. Multiset sorted array\n" + 
+                "\n-------- SET SORTED --------\n" +
+                "6. Set sorted list\n" +
+                "8. Set sorted array\n" +
+                "");
+            while (libraryRuns)
+            {
+                Console.WriteLine("Wählen Sie die Art Ihres Wörterbuchs aus:\n");
+                string a = Console.ReadLine();
+                if (a == "2")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für ein Multiset unsorted Array entschieden");
+                    myArray = new MultiSetUnsortedArray();
+                    libraryRuns = false;
+                }
+                else if (a == "4")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für ein Set unsorted Array entschieden");
+                    myArray = new SetUnsortedArray();
+                    libraryRuns = false;
+                }
+                else if (a == "6")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für ein Multiset sorted Array entschieden");
+                    myArray = new MultiSetSortedArray();
+                    libraryRuns = false;
+                }
+                else if (a == "8")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für ein Set sorted Array entschieden");
+                    myArray = new SetSortedArray();
+                    libraryRuns = false;
+                }
+                else
+                {
+                    Console.WriteLine("Bitte geben Sie eine der Möglichkeiten an");
+                    continue;
+                }
+            }
 
-            //Console.WriteLine("Wählen Sie die Art Ihres Wörterbuchs aus:\n" +
-            //    "1. Multiset unsorted Array\n" +
-            //    "2. Multiset Sorted Array\n" +
-            //    "3. Set unsorted Array\n"   +
-            //    "4. Set sorted Array\n"  +
-            //    "");
-            //while (libraryRuns)
-            //{
-            //    string a = Console.ReadLine();
-            //    if (a == "1")
-            //    {
-            //        Console.Clear();
-            //        Console.WriteLine("Sie haben sich für ein Multiset unsorted Array entschieden");
-            //        myArray = new MultiSetUnsortedArray();
-            //        libraryRuns = false;
-            //    }
-            //    else if (a == "2")
-            //    {
-            //        Console.Clear();
-            //        Console.WriteLine("Sie haben sich für ein Multiset sorted Array entschieden");
-            //        myArray = new MultiSetSortedArray();
-            //        libraryRuns = false;
-            //    }
-            //    else if (a == "3")
-            //    {
-            //        Console.Clear();
-            //        Console.WriteLine("Sie haben sich für ein Set unsorted Array entschieden");
-            //        myArray = new SetUnsortedArray();
-            //        libraryRuns = false;
-            //    }
-            //    else if (a == "4")
-            //    {
-            //        Console.Clear();
-            //        Console.WriteLine("Sie haben sich für ein Set sorted Array entschieden");
-            //        myArray = new SetSortedArray();
-            //        libraryRuns = false;
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Bitte geben Sie eine der Möglichkeiten an");
-            //        continue;
-            //    }
-            //}
+            //what to do with array
+            ShowOptions();
+            bool optionsRun = true;
+            while (optionsRun)
+            {
+                Console.Write("\nWählen Sie eine Option für Ihr Array aus: ");
+                string b = Console.ReadLine();
 
-            ////what to do with array
-            //ShowOptions();
-            //bool optionsRun = true;
-            //while (optionsRun)
-            //{
-            //    Console.Write("\nWählen Sie eine Option für Ihr Array aus: ");
-            //    string b = Console.ReadLine();
+                try
+                {
+                    if (b == "1")
+                    {
+                        Console.Write("\nPrint Array: ");
+                        myArray.Print();
+                    }
+                    else if (b == "2")
+                    {
+                        Console.WriteLine("\nSearch Element: ");
+                        int c = Convert.ToInt32(Console.ReadLine());
+                        myArray.Search(c);
+                    }
+                    else if (b == "3")
+                    {
+                        Console.WriteLine("\nInsert Element: ");
+                        int c = Convert.ToInt32(Console.ReadLine());
+                        myArray.Insert(c);
+                    }
+                    else if (b == "4")
+                    {
+                        Console.WriteLine("\nDelete Element: ");
+                        int c = Convert.ToInt32(Console.ReadLine());
+                        myArray.Delete(c);
+                    }
+                    else if (b == "5")
+                    {
+                        Console.Clear();
+                        ShowOptions();
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Bitte geben Sie eine der Möglichkeiten an");
+                        ShowOptions();
+                        continue;
+                    }
 
-            //    if (b == "1")
-            //    {
-            //        Console.Write("\nPrint Array: ");
-            //        myArray.Print();
-            //    }
-            //    else if (b == "2")
-            //    {
-            //        Console.WriteLine("\nSearch Element: ");
-            //        int c = Convert.ToInt32(Console.ReadLine());
-            //        myArray.Search(c);
-            //    }
-            //    else if (b == "3")
-            //    {
-            //        Console.WriteLine("\nInsert Element: ");
-            //        int c = Convert.ToInt32(Console.ReadLine());
-            //        myArray.Insert(c);
-            //    }
-            //    else if (b == "4")
-            //    {
-            //        Console.WriteLine("\nDelete Element: ");
-            //        int c = Convert.ToInt32(Console.ReadLine());
-            //        myArray.Delete(c);
-            //    }
-            //    else if (b == "5")
-            //    {
-            //        Console.Clear();
-            //        ShowOptions();
-            //    }
-            //    else
-            //    {
-            //        Console.Clear();
-            //        Console.WriteLine("Bitte geben Sie eine der Möglichkeiten an");
-            //        ShowOptions();
-            //        continue;
-            //    }
-            //}
+            }
+                catch
+            {
+                Console.WriteLine("Eingabe muss ein Integer sein");
+            }
+        }
 
 
 
