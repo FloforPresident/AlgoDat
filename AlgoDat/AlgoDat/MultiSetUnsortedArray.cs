@@ -61,7 +61,8 @@ namespace AlgoDat
             else
             {
                 int i = SearchIndex(elem);
-                myArray[i] = 0;
+                myArray[i] = myArray[SearchIndex(0)-1];
+                myArray[SearchIndex(0)-1] = 0;
                 Console.WriteLine("deleted");
                 return true;
             }
