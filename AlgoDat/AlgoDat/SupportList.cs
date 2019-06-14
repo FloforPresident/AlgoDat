@@ -83,7 +83,7 @@ namespace AlgoDat
                 }
                 else
                 {
-                    if (root.element < current.element) //falls kleiner als root
+                    if (root.element > elem) //falls kleiner als root
                     {
                     }
                     else

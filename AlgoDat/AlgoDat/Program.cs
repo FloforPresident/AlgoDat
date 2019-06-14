@@ -54,7 +54,7 @@ namespace AlgoDat
                     Console.WriteLine("Sie haben sich für ein Multiset sorted Array entschieden");
                     myArray = new MultiSetSortedArray();
                     libraryRuns = false;
-                }                
+                }
                 else if (a == "8")
                 {
                     Console.Clear();
