@@ -8,9 +8,21 @@ namespace AlgoDat
 {
     class MultiSetSortedList : SupportList, IMultiSetSorted
     {
-        public bool Search(int elem) { return false; }
-        public bool Insert(int elem) { return false; }
-        public bool Delete(int elem) { return false; }
-        public void Print() { }
+        public bool Insert(int elem)
+        {
+            LElement newelem = new LElement(elem);
+            _search_(elem);
+            if (prev == null)
+            {
+                newelem.next = root;
+                root = newelem;
+            }
+            else
+            {
+                newelem.next = prev.next;
+                prev.next = newelem;
+            }
+            return true;
+        }
     }
 }

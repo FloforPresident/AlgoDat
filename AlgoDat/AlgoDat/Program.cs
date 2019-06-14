@@ -12,6 +12,7 @@ namespace AlgoDat
         {
             //Haupt Bibliotheksprogramm
             IDictonary myArray = null;
+
             
             //which kind of array
             bool libraryRuns = true;
@@ -23,10 +24,10 @@ namespace AlgoDat
                 "3. Set unsorted list\n" +
                 "4. Set unsorted array\n" +
                 "\n----- MULTISET SORTED -----\n" +
-                "5. Set sorted list\n" +
+                "5. Multiset sorted list\n" +
                 "6. Multiset sorted array\n" + 
                 "\n-------- SET SORTED --------\n" +
-                "6. Set sorted list\n" +
+                "7. Set sorted list\n" +
                 "8. Set sorted array\n" +
                 "");
             while (libraryRuns)
@@ -53,7 +54,7 @@ namespace AlgoDat
                     Console.WriteLine("Sie haben sich für ein Multiset sorted Array entschieden");
                     myArray = new MultiSetSortedArray();
                     libraryRuns = false;
-                }
+                }                
                 else if (a == "8")
                 {
                     Console.Clear();
