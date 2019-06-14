@@ -67,7 +67,7 @@ namespace AlgoDat
             //{
             //    Console.Write("\nWählen Sie eine Option für Ihr Array aus: ");
             //    string b = Console.ReadLine();
-                
+
             //    if (b == "1")
             //    {
             //        Console.Write("\nPrint Array: ");
@@ -114,14 +114,25 @@ namespace AlgoDat
 
 
             //BinSearchTree Test
+            //S = {2, 3, 10, 11, 12, 25, 56, 67, 98}
+            //25, 98, 10, 56, 10, 11, 67, 2, 12, 25, 3
             Console.WriteLine("\n\n--------BinTree--------");
             BinSearchTree testTree = new BinSearchTree();
-            testTree.Insert(9);
-            testTree.Insert(4);
+            testTree.Insert(25);
+            testTree.Insert(98);
             testTree.Insert(10);
+            testTree.Insert(56);
+            testTree.Insert(10);
+            testTree.Insert(11);
+            testTree.Insert(67);
             testTree.Insert(2);
+            testTree.Insert(12);
+            testTree.Insert(25);
+            testTree.Insert(3);
 
+            //Console.WriteLine(testTree.Delete(12)); 
             testTree.Print();
+
         }
         public static void ShowOptions()
         {

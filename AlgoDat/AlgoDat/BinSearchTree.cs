@@ -12,6 +12,7 @@ namespace AlgoDat
         {
             public Node left;
             public Node right;
+            public Node parent;
             public int value;
 
             public Node(int value)
@@ -28,7 +29,7 @@ namespace AlgoDat
                 if (node == null)
                     return;
 
-                if(order == 1)
+                if (order == 1)
                 {
                     Console.WriteLine(node.value);
                     if (node.left != null)
@@ -36,7 +37,7 @@ namespace AlgoDat
                     if (node.right != null)
                         print(node.right, order);
                 }
-                else if(order == 2)
+                else if (order == 2)
                 {
                     if (node.left != null)
                         print(node.left, order);
@@ -44,7 +45,7 @@ namespace AlgoDat
                     if (node.right != null)
                         print(node.right, order);
                 }
-                else if(order == 3)
+                else if (order == 3)
                 {
                     if (node.left != null)
                         print(node.left, order);
@@ -61,13 +62,14 @@ namespace AlgoDat
         /***********************/
         /********SEARCH*********/
         /***********************/
-        public bool Search(int elem) {
+        public bool Search(int elem)
+        {
             if (root == null)
                 return false;
             else
             {
                 Node index = root;
-                while(index != null)
+                while (index != null)
                 {
                     if (index.value > elem)
                         index = index.left;
@@ -85,48 +87,49 @@ namespace AlgoDat
         /***********************/
         public bool Insert(int elem)
         {
-            if(root == null)
+            if (root == null)
                 root = new Node(elem);
             else
                 Insert(root, elem);
             return true;
         }
-        private void Insert(Node parent, int elem)
+        private void Insert(Node index, int elem)
         {
-            while(parent != null)
+            while (index != null)
             {
-                if(parent.value > elem)
+                if (index.value > elem)
                 {
-                    if (parent.left == null)
+                    if (index.left == null)
                     {
-                        parent.left = new Node(elem);
+                        index.left = new Node(elem);
                         return;
                     }
                     else
-                        parent = parent.left;
+                        index = index.left;
                 }
-                else if (parent.value < elem)
+                else if (index.value < elem)
                 {
-                    if (parent.right == null)
+                    if (index.right == null)
                     {
-                        parent.right = new Node(elem);
+                        index.right = new Node(elem);
                         return;
                     }
                     else
-                        parent = parent.right;
+                        index = index.right;
                 }
+                else return;
             }
         }
 
         /***********************/
-        /********INSERT*********/
+        /********DELETE*********/
         /***********************/
         public bool Delete(int elem)
         {
             if (root == null) { return false; }
-            
+
             Node index = root;
-            while(index != null)
+            while (index != null)
             {
                 if (index.value == elem)
                     break;
@@ -136,44 +139,41 @@ namespace AlgoDat
                     index = index.left;
             }
             if (index == null) { return false; }
-            else
+
+            Node delete = index; //umspeichern damit index später wiederverwertet werden kann / delete ist Node dass gelöscht wird
+
+            if (delete.left == null && delete.right == null) //Blatt ohne Nachfolger
             {
-                Node delete = index; //umspeichern damit index später wiederverwertet werden kann / delete ist Node dass gelöscht wird
-
-                if (delete.left == null && delete.right == null) //Blatt ohne Nachfolger
-                    delete = null;
-                //if (delete.left == null || delete.right == null && delete.left != delete.right) //Zu Löschendes Blatt hat nur einen Nachfolger
-                //{
-                //    if (delete.left == null)
-                //    {
-                //        delete = delete.right;
-                //        delete.right = null;
-                //    }
-                //    if(delete.right == null)
-                //    {
-                //        delete = delete.left;
-                //        delete.left = null;
-                //    }
-                //}
-                //Auskommentiertes überarbeiten => Nachfolger game nochmal nachschauen
-                //Zu Löschendes Blatt kann nur einen Nachfolger haben aber dieser kann wieder mehrere Besitzen!
-
-
-
-                //if (delete.left != null && delete.right != null)
-                //{
-                //    index = index.right;
-                //    while (index.left != null)
-                //    {
-                //        index = index.left;
-                //    }
-                //    delete = index;
-                //    index = null;
-                //}
-                //Was wenn nur ein Nachfolger aber dieser auch mehrere Nachfolger
-
+                delete = null;
+                Console.WriteLine("Ich bin hier");
                 return true;
             }
+            if (delete.left == null || delete.right == null && delete.left != delete.right) //Zu Löschendes Blatt hat nur einen Nachfolger
+            {
+                if (delete.left == null)
+                {
+                    delete = delete.right;
+                }
+                if (delete.right == null)
+                {
+                    delete = delete.left;
+                }
+                return true;
+            }
+
+
+            if (delete.left != null && delete.right != null)
+            {
+                index = index.left;
+                while (index.right != null)
+                {
+                    index = index.right;
+                }
+                delete = index;
+                index = null;
+                return true;
+            }
+            return false;
         }
 
 
