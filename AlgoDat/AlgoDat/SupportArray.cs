@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace AlgoDat
 {
-    abstract class SupportArray
+    abstract class SupportArray :IDictonary
     {
         public int[] myArray = new int[50]; //array declaration
+        public abstract bool Search(int elem);
+        public abstract bool Insert(int elem);
+        public abstract bool Delete(int elem);
 
         public void Print()
         {

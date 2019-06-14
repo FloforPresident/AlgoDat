@@ -8,9 +8,8 @@ namespace AlgoDat
 {
     class MultiSetSortedArray : SupportArray, IMultiSetSorted
     {
-        public bool Search(int elem) { return false; }
-        public bool Insert(int elem) { return false; }
-        public bool Delete(int elem) { return false; }
-        public void Print() { }
+        public override bool Search(int elem) { return false; }
+        public override bool Insert(int elem) { return false; }
+        public override bool Delete(int elem) { return false; }
     }
 }

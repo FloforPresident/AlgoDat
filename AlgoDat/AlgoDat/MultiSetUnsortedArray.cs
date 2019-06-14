@@ -9,7 +9,7 @@ namespace AlgoDat
     class MultiSetUnsortedArray : SupportArray, IMultiSet
     {        
         //print in SupportArray
-        public bool Search(int elem)
+        public override bool Search(int elem)
         {
             for (int i = 0; i < myArray.Length; i++)
             {
@@ -23,7 +23,7 @@ namespace AlgoDat
             return false;
         }
 
-        public virtual bool Insert(int newElem)
+        public override bool Insert(int newElem)
         {
             for (int i = 0; i < myArray.Length; i++)
             {
@@ -39,7 +39,7 @@ namespace AlgoDat
         }
 
 
-        public bool Delete(int elem)
+        public override bool Delete(int elem)
         {
             if(!Search(elem))
             {
