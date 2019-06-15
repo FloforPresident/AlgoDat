@@ -8,45 +8,84 @@ namespace AlgoDat
 {
     class MultiSetSortedArray : SupportArray, IMultiSetSorted
     {
-        int i = 0;
+        protected int searchindex;
+
+        //protected int SearchIndex(int elem)
+        //{
+        //    for (int i = 0; i < myArray.Length; i++)
+        //    {
+        //        if (myArray[i] == elem)
+        //        {
+        //            return i;
+        //        }
+        //    }
+        //    return -1;
+        //}
         public override bool Search(int elem)
         {
             int min = 0;
-            int max = myArray.GetLength(0) - 1;
-            int guess = max / 2;
+            int max = myArray.GetLength(0)-1;
+            //int guess = (min + max) / 2;
 
-            while (myArray[guess] != elem)
+            while (min<=max)
             {
-                if (myArray[guess] < elem)
+                int guess = (min + max) / 2;
+                if (myArray[guess] == elem)
                 {
-                    min = guess + 1;
+                    searchindex = guess;
+                    Console.WriteLine("gefunden");
+                    return true;
                 }
-                else
+                if (elem < myArray[guess])
                 {
                     max = guess - 1;
                 }
-                guess = (max + min) / 2;
-
-                if (min > max)
+                else
                 {
-                    Console.WriteLine("nicht gefunden");
-                    return false;
+                    min = guess + 1;
                 }
-                i++;
             }
-            Console.WriteLine("gefunden");
-            return true;
+            searchindex = -1;
+            Console.WriteLine("nicht gefunden");
+            return false;
+
+            //while (myArray[guess] != elem)
+            //{
+            //    if (min > max)
+            //    {
+            //        searchindex = -1;
+            //        Console.WriteLine("nicht gefunden");
+            //        return false;
+            //    }
+            //    guess = (max + min) / 2;
+
+            //    if (myArray[guess] < elem)
+            //    {
+            //        min = guess + 1;
+            //    }
+            //    else
+            //    {
+            //        max = guess - 1;
+            //    }
+            //}
+            //searchindex = guess;
+            //Console.WriteLine("gefunden");
+            //return true;
         }
 
         public override bool Insert(int elem)
         {
-            if (Search(elem))//Element existiert schon einmal
+            Search(elem);
+            
+
+            if (searchindex != -1)//Element existiert schon einmal
             {
-                for (int j = myArray.GetLength(0); j > i; j--)
+                for (int j = myArray.Length-1; j > searchindex; j--)
                 {
                     myArray[j] = myArray[j - 1];
                 }
-                myArray[i] = elem;
+                myArray[searchindex + 1] = elem;
+                Console.WriteLine("eingefügt");
                 return true;
             }
             else //Element existiert noch nicht
@@ -55,9 +94,9 @@ namespace AlgoDat
                 int current = myArray[pos];
                 int next = myArray[pos + 1];
 
-                if (elem < current) //Objekt wird an erster Stelle eingefügt
+                if (elem < current || myArray[pos] == 0) //Objekt wird an erster Stelle eingefügt
                 {
-                    for (int j = myArray.GetLength(0); j > 1; j--)
+                    for (int j = myArray.Length-1; j > 0; j--)
                     {
                         myArray[j] = myArray[j - 1];
                     }
@@ -68,18 +107,19 @@ namespace AlgoDat
                 }
                 else if (elem > current) //Objekt wird mittendrin eingefügt
                 {
-                    for (int i = 0; i < myArray.GetLength(0); i++) //Array durchlaufen
+                    for (int k = 0; k < myArray.Length-1; k++) //Array durchlaufen
                     {
-                        if (elem > myArray[i] && elem < myArray[i + 1]) //falls elem zwischen aktuellem und nächstem Wert ist
+                        if ((elem > myArray[k] && elem < myArray[k + 1]) || (elem > myArray[k] && myArray[k + 1] == 0)) //falls elem zwischen aktuellem und nächstem Wert ist oder falls elem an letzter Stelle eingefügt werden soll
                         {
-                            for (int j = myArray.GetLength(0); j > i; j--) //Alle Werte rechts von kleinerem Wert nach rechts verschieben
+                            for (int j = myArray.Length-1; j > k; j--) //Alle Werte rechts von kleinerem Wert nach rechts verschieben
                             {
                                 myArray[j] = myArray[j - 1];
+                                pos = j;
                             }
                             break;
                         }
                     }
-                    myArray[i + 1] = elem; //Elem auf Stelle des größeren Wertes setzen
+                    myArray[pos] = elem; //Elem auf Stelle des größeren Wertes setzen
                     Console.WriteLine("eingefügt");
                     return true;
                 }
@@ -90,6 +130,7 @@ namespace AlgoDat
 
         public override bool Delete(int elem)
         {
+            Search(elem);
             if (!Search(elem)) //Element ist im Array nicht vorhanden
             {
                 Console.WriteLine("Element nicht vorhanden");
@@ -97,7 +138,7 @@ namespace AlgoDat
             }
             else
             {
-                for (int j = i; j < myArray.GetLength(0); j++)
+                for (int j = searchindex; j < myArray.GetLength(0); j++)
                 {
                     myArray[j] = myArray[j - 1]; //alle Elemente rechts von i werden um eins nach links verschoben
                 }
