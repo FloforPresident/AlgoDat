@@ -8,7 +8,7 @@ namespace AlgoDat
 {
     abstract class SupportArray :IDictonary
     {
-        public int[] myArray = new int[50]; //array declaration
+        public int[] myArray = new int[7/*50*/]; //array declaration
         public abstract bool Search(int elem);
         public abstract bool Insert(int elem);
         public abstract bool Delete(int elem);
@@ -17,7 +17,10 @@ namespace AlgoDat
         {
             for (int i = 0; i < myArray.Length; i++)
             {
-                Console.Write(myArray[i] + " ");
+                //if(myArray[i] != 0 )
+                //{
+                    Console.Write(myArray[i] + " ");
+                //}
             }
             Console.WriteLine();
         }

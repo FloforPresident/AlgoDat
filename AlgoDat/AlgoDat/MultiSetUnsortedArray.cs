@@ -37,10 +37,13 @@ namespace AlgoDat
 
         public override bool Insert(int newElem)
         {
-            int i = SearchIndex(0);
-            if(i >= 0 && newElem > 0)
+            HashTabQuadProb findIndex = new HashTabQuadProb(myArray, newElem);
+            int index = findIndex.getHashIndex();
+
+            if (index >= 0 && newElem > 0)
             {
-                myArray[i] = newElem;
+                myArray[index] = newElem;
+                //myArray[i] = newElem;
                 Console.WriteLine("inserted");
                 return true;
             }
@@ -49,7 +52,7 @@ namespace AlgoDat
                 Console.WriteLine("not inserted");
                 return false;
             }
-                
+
         }
 
         public override bool Delete(int elem)

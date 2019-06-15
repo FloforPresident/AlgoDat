@@ -158,7 +158,6 @@ namespace AlgoDat
                     {
                         Console.Clear();
                         ShowOptions(myArray);
-                        Console.WriteLine("Bitte geben Sie eine der Möglichkeiten an");
                         continue;
                     }
 
