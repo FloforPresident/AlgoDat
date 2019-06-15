@@ -29,30 +29,61 @@ namespace AlgoDat
                 "\n-------- SET SORTED --------\n" +
                 "7. Set sorted list\n" +
                 "8. Set sorted array\n" +
+                "\n------------ TREE -----------\n" +
+                "9. Bin tree\n" +
+                "0. AVL tree\n" +
                 "");
             while (libraryRuns)
             {
                 Console.WriteLine("Wählen Sie die Art Ihres Wörterbuchs aus:\n");
                 string a = Console.ReadLine();
+                if (a == "1")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für eine multiset unsorted list entschieden");
+                    myArray = new MultiSetUnsortedLinkedList();
+                    libraryRuns = false;
+                }
                 if (a == "2")
                 {
                     Console.Clear();
-                    Console.WriteLine("Sie haben sich für ein Multiset unsorted Array entschieden");
+                    Console.WriteLine("Sie haben sich für ein multiset unsorted Array entschieden");
                     myArray = new MultiSetUnsortedArray();
+                    libraryRuns = false;
+                }
+                if (a == "3")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für eine set unsorted list entschieden");
+                    myArray = new SetUnsortedLinkedList();
                     libraryRuns = false;
                 }
                 else if (a == "4")
                 {
                     Console.Clear();
-                    Console.WriteLine("Sie haben sich für ein Set unsorted Array entschieden");
+                    Console.WriteLine("Sie haben sich für ein set unsorted Array entschieden");
                     myArray = new SetUnsortedArray();
+                    libraryRuns = false;
+                }
+                else if (a == "5")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für eine multiset sorted list entschieden");
+                    myArray = new MultiSetSortedList();
                     libraryRuns = false;
                 }
                 else if (a == "6")
                 {
                     Console.Clear();
-                    Console.WriteLine("Sie haben sich für ein Multiset sorted Array entschieden");
+                    Console.WriteLine("Sie haben sich für ein multiset sorted Array entschieden");
                     myArray = new MultiSetSortedArray();
+                    libraryRuns = false;
+                }
+                else if (a == "7")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für eine set sorted list entschieden");
+                    myArray = new SetSortedLinkedList();
                     libraryRuns = false;
                 }
                 else if (a == "8")
@@ -62,19 +93,31 @@ namespace AlgoDat
                     myArray = new SetSortedArray();
                     libraryRuns = false;
                 }
+                else if (a == "9")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für einen bin search tree entschieden");
+                    myArray = new BinSearchTree();
+                    libraryRuns = false;
+                }
+                else if (a == "0")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für einen AVL tree entschieden");
+                    myArray = new AVLTree();
+                    libraryRuns = false;
+                }
                 else
                 {
-                    Console.WriteLine("Bitte geben Sie eine der Möglichkeiten an");
                     continue;
                 }
             }
 
             //what to do with array
-            ShowOptions();
+            ShowOptions(myArray);
             bool optionsRun = true;
             while (optionsRun)
             {
-                Console.Write("\nWählen Sie eine Option für Ihr Array aus: ");
                 string b = Console.ReadLine();
 
                 try
@@ -105,21 +148,25 @@ namespace AlgoDat
                     else if (b == "5")
                     {
                         Console.Clear();
-                        ShowOptions();
+                        ShowOptions(myArray);
+                    }
+                    else if (b == "Q" || b == "q")
+                    {
+                        Environment.Exit(0);
                     }
                     else
                     {
                         Console.Clear();
+                        ShowOptions(myArray);
                         Console.WriteLine("Bitte geben Sie eine der Möglichkeiten an");
-                        ShowOptions();
                         continue;
                     }
 
-            }
+                }
                 catch
-            {
-                Console.WriteLine("Eingabe muss ein Integer sein");
-            }
+                {
+                    Console.WriteLine("Eingabe muss ein Integer sein");
+                }
         }
 
 
@@ -151,13 +198,17 @@ namespace AlgoDat
             testTree.Print();
 
         }
-        public static void ShowOptions()
+        public static void ShowOptions(object a)
         {
+            Console.WriteLine(a + "\n");
+
             Console.WriteLine("1. Print array\n" +
                 "2. Search element\n" +
                 "3. Insert element\n" +
                 "4. Delete element\n" +
-                "5. Clear console");
+                "PRESS ENTER TO Clear console\n" + 
+                "Q TO QUIT");
+            Console.Write("\nWählen Sie eine Option für Ihr Array aus: ");
         }
     }
 }
