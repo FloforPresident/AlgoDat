@@ -199,8 +199,7 @@ namespace AlgoDat
             //testTree.Print();
 
 
-            ////Multi Set Sorted Arrays Test
-
+            //Multi Set Sorted Arrays Test
             //myArray = new MultiSetSortedArray();
             //libraryRuns = false;
 
@@ -208,7 +207,82 @@ namespace AlgoDat
             //Console.WriteLine("======einfügen======");
             //Console.WriteLine("=====================");
 
-            //Console.WriteLine("=0=======================");
+            //Console.WriteLine("=4=======================");
+            //myArray.Insert(4);
+            //myArray.Print();
+            //Console.WriteLine("=12======================");
+            //myArray.Insert(12);
+            //myArray.Print();
+            //Console.WriteLine("=8=======================");
+            //myArray.Insert(8);
+            //myArray.Print();
+            //Console.WriteLine("=9=======================");
+            //myArray.Insert(9);
+            //myArray.Print();
+            //Console.WriteLine("=10=======================");
+            //myArray.Insert(10);
+            //myArray.Print();
+            //Console.WriteLine("=12======================");
+            //myArray.Insert(12);
+            //myArray.Print();
+            //Console.WriteLine("=8=======================");
+            //myArray.Insert(8);
+            //myArray.Print();
+            //Console.WriteLine("=10======================");
+            //myArray.Insert(10);
+            //myArray.Print();
+            //Console.WriteLine("=15======================");
+            //myArray.Insert(15);
+            //myArray.Print();
+
+            //Console.WriteLine("=====================");
+            //Console.WriteLine("======suchen======");
+            //Console.WriteLine("=====================");
+
+            //Console.WriteLine("=12======================");
+            //myArray.Search(12);
+            //Console.WriteLine("=8======================");
+            //myArray.Search(8);
+            //Console.WriteLine("=15======================");
+            //myArray.Search(15);
+            //Console.WriteLine("=10======================");
+            //myArray.Search(10);
+            //Console.WriteLine("=3======================");
+            //myArray.Search(3);
+            //Console.WriteLine("=20======================");
+            //myArray.Search(20);
+
+            //Console.WriteLine("=====================");
+            //Console.WriteLine("======löschen======");
+            //Console.WriteLine("=====================");
+
+            //Console.WriteLine("=8======================");
+            //myArray.Delete(8);
+            //myArray.Print();
+            //Console.WriteLine("=8======================");
+            //myArray.Delete(8);
+            //myArray.Print();
+            //Console.WriteLine("=3======================");
+            //myArray.Delete(3);
+            //myArray.Print();
+            //Console.WriteLine("=15======================");
+            //myArray.Delete(15);
+            //myArray.Print();
+            //Console.WriteLine("=4======================");
+            //myArray.Delete(4);
+            //myArray.Print();
+
+
+
+            //Set Sorted Arrays Test
+            //myArray = new SetSortedArray();
+            //libraryRuns = false;
+
+            //Console.WriteLine("=====================");
+            //Console.WriteLine("======einfügen======");
+            //Console.WriteLine("=====================");
+
+            //Console.WriteLine("=4=======================");
             //myArray.Insert(4);
             //myArray.Print();
             //Console.WriteLine("=12======================");
@@ -232,7 +306,7 @@ namespace AlgoDat
 
             //Console.WriteLine("=====================");
             //Console.WriteLine("======suchen======");
-            //Console.WriteLine("=====================");%
+            //Console.WriteLine("=====================");
 
             //Console.WriteLine("=12======================");
             //myArray.Search(12);
@@ -246,8 +320,25 @@ namespace AlgoDat
             //myArray.Search(3);
             //Console.WriteLine("=20======================");
             //myArray.Search(20);
-            //Console.WriteLine("=0======================"); //falls letzte Stelle = 0, nicht gefunden
-            //myArray.Search(0);
+
+            //Console.WriteLine("=====================");
+            //Console.WriteLine("======löschen======");
+            //Console.WriteLine("=====================");
+
+            //Console.WriteLine("=8======================");
+            //myArray.Delete(8);
+            //myArray.Print();
+            //Console.WriteLine("=3======================");
+            //myArray.Delete(3);
+            //myArray.Print();
+            //Console.WriteLine("=15======================");
+            //myArray.Delete(15);
+            //myArray.Print();
+            //Console.WriteLine("=4======================");
+            //myArray.Delete(4);
+            //myArray.Print();
+
+
 
             //Console.ReadLine();
 
