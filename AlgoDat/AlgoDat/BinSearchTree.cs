@@ -8,57 +8,7 @@ namespace AlgoDat
 {
     class BinSearchTree : ISetSorted
     {
-        class Node
-        {
-            public Node left;
-            public Node right;
-            public int value;
-            public Node parent;
-
-            public Node(int value, Node parent)
-            {
-                this.value = value;
-                this.parent = parent;
-            }
-
-
-            /***********************/
-            /********Print*********/
-            /***********************/
-            public static void print(Node node, int order)
-            {
-                if (node == null)
-                    return;
-
-                if (order == 1)
-                {
-                    Console.WriteLine(node.value);
-                    if (node.left != null)
-                        print(node.left, order);
-                    if (node.right != null)
-                        print(node.right, order);
-                }
-                else if (order == 2)
-                {
-                    if (node.left != null)
-                        print(node.left, order);
-                    Console.WriteLine(node.value);
-                    if (node.right != null)
-                        print(node.right, order);
-                }
-                else if (order == 3)
-                {
-                    if (node.left != null)
-                        print(node.left, order);
-                    if (node.right != null)
-                        print(node.right, order);
-                    Console.WriteLine(node.value);
-                }
-            }
-        }
-
-        Node root;
-
+        BinSearchNode root;
 
         /***********************/
         /********SEARCH*********/
@@ -69,7 +19,7 @@ namespace AlgoDat
                 return false;
             else
             {
-                Node index = root;
+                BinSearchNode index = root;
                 while (index != null)
                 {
                     if (index.value > elem)
@@ -89,37 +39,32 @@ namespace AlgoDat
         public bool Insert(int elem)
         {
             if (root == null)
-                root = new Node(elem, null);
+                root = new BinSearchNode(elem, null);
             else
                 Insert(root, elem);
             return true;
         }
-        private void Insert(Node index, int elem)
+        private void Insert(BinSearchNode index, int elem)
         {
-            while (index != null)
+            if (index.value > elem)
             {
-                if (index.value > elem)
+                if (index.left == null)
+                    index.left = new BinSearchNode(elem, index);
+                else
                 {
-                    if (index.left == null)
-                    {
-                        index.left = new Node(elem, index);
-                        return;
-                    }
-                    else
-                        index = index.left;
+                    Insert(index.left, elem);
                 }
-                else if (index.value < elem)
-                {
-                    if (index.right == null)
-                    {
-                        index.right = new Node(elem, index);
-                        return;
-                    }
-                    else
-                        index = index.right;
-                }
-                else return;
             }
+            else if (index.value < elem)
+            {
+                if (index.right == null)
+                    index.right = new BinSearchNode(elem, index);
+                else
+                {
+                    Insert(index.right, elem);
+                }
+            }
+            else return;
         }
 
         /***********************/
@@ -129,7 +74,7 @@ namespace AlgoDat
         {
             if (root == null) { return false; }
 
-            Node index = root;
+            BinSearchNode index = root;
             while (index != null)
             {
                 if (index.value == elem)
@@ -144,9 +89,9 @@ namespace AlgoDat
             Delete(index);
             return true;
         }
-        private void Delete(Node node)
+        private void Delete(BinSearchNode node)
         {
-            Node parent = node.parent;
+            BinSearchNode parent = node.parent;
 
             if(node.left == null && node.right == null) //Blatt ohne Nachfolger
             {
@@ -207,7 +152,7 @@ namespace AlgoDat
             }
             else if (node.left != null && node.right != null) //Zu Löschendes Blatt hat zwei Nachfolger
             {
-                Node index = node;
+                BinSearchNode index = node;
                 index = index.left;
                 while (index.right != null) //Am ende steht in index letzes Element
                 {
@@ -229,7 +174,7 @@ namespace AlgoDat
             int order = Convert.ToInt16(Console.ReadLine());
             if (order == 1 || order == 2 || order == 3)
             {
-                Node.print(root, order);
+                BinSearchNode.print(root, order);
             }
         }
     }

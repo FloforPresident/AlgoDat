@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AVLNode.cs" />
     <Compile Include="AVLTree.cs" />
     <Compile Include="BinSearchTree.cs" />
     <Compile Include="HashTabQuadProb.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="MultiSetSortedList.cs" />
     <Compile Include="MultiSetUnsortedArray.cs" />
     <Compile Include="MultiSetUnsortedLinkedList.cs" />
+    <Compile Include="BinSearchNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetSortedArray.cs" />
