@@ -221,69 +221,146 @@ namespace AlgoDat
             //Console.WriteLine("======einfügen======");
             //Console.WriteLine("=====================");
 
+            //Console.WriteLine("");
             //Console.WriteLine("=4=======================");
             //myArray.Insert(4);
             //myArray.Print();
+
+            //Console.WriteLine("");
+            //Console.WriteLine("=4=======================");
+            //myArray.Insert(4);
+            //myArray.Print();
+
+            //Console.WriteLine("");
+            //Console.WriteLine("=0=======================");
+            //myArray.Insert(0);
+            //myArray.Print();
+
+
+            //Console.WriteLine("");
+            //Console.WriteLine("=2=======================");
+            //myArray.Insert(2);
+            //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=12======================");
             //myArray.Insert(12);
             //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=8=======================");
             //myArray.Insert(8);
             //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=9=======================");
             //myArray.Insert(9);
             //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=10=======================");
             //myArray.Insert(10);
             //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=12======================");
             //myArray.Insert(12);
             //myArray.Print();
+
+            //Console.WriteLine("");
+            //Console.WriteLine("=10=======================");
+            //myArray.Insert(10);
+            //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=8=======================");
             //myArray.Insert(8);
             //myArray.Print();
-            //Console.WriteLine("=10======================");
-            //myArray.Insert(10);
-            //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=15======================");
             //myArray.Insert(15);
             //myArray.Print();
 
+            //Console.WriteLine("");
+            //Console.WriteLine("=3======================");
+            //myArray.Insert(3);
+            //myArray.Print();
+
+            //Console.WriteLine("");
+            //Console.WriteLine("=20======================");
+            //myArray.Insert(20);
+            //myArray.Print();
+
+            //Console.WriteLine("");
+            //Console.WriteLine("");
             //Console.WriteLine("=====================");
             //Console.WriteLine("======suchen======");
             //Console.WriteLine("=====================");
+            //Console.WriteLine("");
 
             //Console.WriteLine("=12======================");
             //myArray.Search(12);
+
+            //Console.WriteLine("");
             //Console.WriteLine("=8======================");
             //myArray.Search(8);
+
+            //Console.WriteLine("");
             //Console.WriteLine("=15======================");
             //myArray.Search(15);
+
+            //Console.WriteLine("");
             //Console.WriteLine("=10======================");
             //myArray.Search(10);
+
+            //Console.WriteLine("");
             //Console.WriteLine("=3======================");
             //myArray.Search(3);
+
+            //Console.WriteLine("");
             //Console.WriteLine("=20======================");
             //myArray.Search(20);
 
+            //Console.WriteLine("");
+            //Console.WriteLine("");
             //Console.WriteLine("=====================");
             //Console.WriteLine("======löschen======");
             //Console.WriteLine("=====================");
+            //Console.WriteLine("")
 
             //Console.WriteLine("=8======================");
             //myArray.Delete(8);
             //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=8======================");
             //myArray.Delete(8);
             //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=3======================");
             //myArray.Delete(3);
             //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=15======================");
             //myArray.Delete(15);
             //myArray.Print();
+
+            //Console.WriteLine("");
             //Console.WriteLine("=4======================");
             //myArray.Delete(4);
+            //myArray.Print();
+
+            //Console.WriteLine("");
+            //Console.WriteLine("=12======================");
+            //myArray.Delete(12);
+            //myArray.Print();
+
+            //Console.WriteLine("");
+            //Console.WriteLine("=20======================");
+            //myArray.Delete(20);
             //myArray.Print();
 
 
@@ -295,64 +372,102 @@ namespace AlgoDat
             //Console.WriteLine("=====================");
             //Console.WriteLine("======einfügen======");
             //Console.WriteLine("=====================");
+            //Console.WriteLine("");
 
             //Console.WriteLine("=4=======================");
             //myArray.Insert(4);
             //myArray.Print();
+            //Console.WriteLine("");
+
+            //Console.WriteLine("=2=======================");
+            //myArray.Insert(2);
+            //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=12======================");
             //myArray.Insert(12);
             //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=8=======================");
             //myArray.Insert(8);
             //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=12======================");
             //myArray.Insert(12);
             //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=8=======================");
             //myArray.Insert(8);
             //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=10======================");
             //myArray.Insert(10);
             //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=15======================");
             //myArray.Insert(15);
             //myArray.Print();
 
+            //Console.WriteLine("");
+            //Console.WriteLine("");
             //Console.WriteLine("=====================");
             //Console.WriteLine("======suchen======");
             //Console.WriteLine("=====================");
+            //Console.WriteLine("");
 
             //Console.WriteLine("=12======================");
             //myArray.Search(12);
+            //Console.WriteLine("");
+
             //Console.WriteLine("=8======================");
             //myArray.Search(8);
+            //Console.WriteLine("");
+
             //Console.WriteLine("=15======================");
             //myArray.Search(15);
+            //Console.WriteLine("");
+
             //Console.WriteLine("=10======================");
             //myArray.Search(10);
+            //Console.WriteLine("");
+
             //Console.WriteLine("=3======================");
             //myArray.Search(3);
+            //Console.WriteLine("");
+
             //Console.WriteLine("=20======================");
             //myArray.Search(20);
 
+            //Console.WriteLine("");
+            //Console.WriteLine("");
             //Console.WriteLine("=====================");
             //Console.WriteLine("======löschen======");
             //Console.WriteLine("=====================");
+            //Console.WriteLine("");
 
             //Console.WriteLine("=8======================");
             //myArray.Delete(8);
             //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=3======================");
             //myArray.Delete(3);
             //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=15======================");
             //myArray.Delete(15);
             //myArray.Print();
+            //Console.WriteLine("");
+
             //Console.WriteLine("=4======================");
             //myArray.Delete(4);
             //myArray.Print();
-
-
 
             //Console.ReadLine();
 

@@ -8,7 +8,70 @@ namespace AlgoDat
 {
     class MultiSetSortedArray : SupportArray, IMultiSetSorted
     {
-        protected int searchindex;
+        /// <summary>
+        /// Konstruktor um Array mit -1 als Default zu füllen
+        /// </summary>
+        public MultiSetSortedArray()
+        {
+            for (int i = 0; i < myArray.GetLength(0); i++)
+            {
+                myArray[i] = -1;
+            }
+        }
+
+        protected int searchindex; //Hilfsvariable
+
+        /// <summary>
+        /// Hilfsmethode für einfügen nach suche
+        /// </summary>
+        /// <param name="elem">nicht negative ganze Zahl</param>
+        /// <returns></returns>
+        public bool InsertElemaftersearch(int elem)
+        {
+            if (myArray[myArray.GetLength(0) - 1] != -1 && myArray[myArray.GetLength(0) - 1] < elem) //Array ist bereits voll und Elem ist größer als bisheriges Maximum
+            {
+                Console.WriteLine("Array ist bereits voll und Element ist größer als bisheriges Maximum");
+                return false;
+            }
+            else
+            {
+                int pos = 0;
+                int current = myArray[pos];
+                int next = myArray[pos + 1];
+
+                if (elem < current || myArray[pos] == -1) //Objekt wird an erster Stelle eingefügt
+                {
+                    for (int j = myArray.Length - 1; j > 0; j--)
+                    {
+                        myArray[j] = myArray[j - 1];
+                    }
+                    myArray[0] = elem;
+
+                    Console.WriteLine("eingefügt");
+                    return true;
+                }
+                else if (elem > current) //Objekt wird mittendrin eingefügt
+                {
+                    for (int k = 0; k < myArray.Length - 1; k++) //Array durchlaufen
+                    {
+                        if ((elem > myArray[k] && elem < myArray[k + 1]) || (elem > myArray[k] && myArray[k + 1] == -1)) //falls elem zwischen aktuellem und nächstem Wert ist oder falls elem an letzter Stelle eingefügt werden soll
+                        {
+                            for (int j = myArray.Length - 1; j > k; j--) //Alle Werte rechts von kleinerem Wert nach rechts verschieben
+                            {
+                                myArray[j] = myArray[j - 1];
+                                pos = j;
+                            }
+                            break;
+                        }
+                    }
+                    myArray[pos] = elem; //Elem auf Stelle des größeren Wertes setzen
+                    Console.WriteLine("eingefügt");
+                    return true;
+                }
+            }
+            Console.WriteLine("irgendwas passt nicht");
+            return false;
+        }
 
         public override bool Search(int elem)
         {
@@ -19,12 +82,21 @@ namespace AlgoDat
             while (min <= max)
             {
 
-                if (myArray[guess] == 0) //falls geratene Stelle im Array=0, gehe eine Position nach links, da das Array ab hier noch nicht befüllt wurde
+                if (myArray[guess] == -1) //falls geratene Stelle im Array=-1, gehe eine Position nach links, da das Array ab hier noch nicht befüllt wurde
                 {
                     guess--;
                     if (guess == 0)
                     {
-                        break;
+                        if (myArray[guess] == elem) //Fall, dass Element gleich dem an erster Stelle ist
+                        {
+                            searchindex = guess;
+                            Console.WriteLine("gefunden");
+                            return true;
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
                 }
                 else //berechne guess ganz normal laut binärer Suche
@@ -47,6 +119,10 @@ namespace AlgoDat
                 {
                     max = guess - 1;
                 }
+                else if (elem > myArray[guess] && myArray[guess] != -1 && myArray[guess + 1] == -1) //Fall dass Element größer als Maximum ist, aber nicht im Array vorhanden
+                {
+                    break;
+                }
                 else
                 {
                     min = guess + 1;
@@ -59,10 +135,13 @@ namespace AlgoDat
 
         public override bool Insert(int elem)
         {
-            Search(elem);
-
-            if (searchindex != -1)//Element existiert schon einmal
+            if (Search(elem))//Element existiert schon einmal
             {
+                if (searchindex == myArray.GetLength(0) - 1) //Array ist voll und Elem ist gleichgroß wie letztes Element
+                {
+                    Console.WriteLine("Array ist bereits voll und Element ist gleich dem bisherigen Maximum");
+                    return false;
+                }
                 for (int j = myArray.Length - 1; j > searchindex; j--)
                 {
                     myArray[j] = myArray[j - 1];
@@ -73,49 +152,14 @@ namespace AlgoDat
             }
             else //Element existiert noch nicht
             {
-                if (myArray[myArray.GetLength(0) - 1] != 0 && myArray[myArray.GetLength(0) - 1] < elem) //Array ist bereits voll und Elem ist größer als bisheriges Maximum
+                if (InsertElemaftersearch(elem))
                 {
-                    Console.WriteLine("Array ist bereits voll und Elem ist größer als bisheriges Maximum");
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    int pos = 0;
-                    int current = myArray[pos];
-                    int next = myArray[pos + 1];
-
-                    if (elem < current || myArray[pos] == 0) //Objekt wird an erster Stelle eingefügt
-                    {
-                        for (int j = myArray.Length - 1; j > 0; j--)
-                        {
-                            myArray[j] = myArray[j - 1];
-                        }
-                        myArray[0] = elem;
-
-                        Console.WriteLine("eingefügt");
-                        return true;
-                    }
-                    else if (elem > current) //Objekt wird mittendrin eingefügt
-                    {
-                        for (int k = 0; k < myArray.Length - 1; k++) //Array durchlaufen
-                        {
-                            if ((elem > myArray[k] && elem < myArray[k + 1]) || (elem > myArray[k] && myArray[k + 1] == 0)) //falls elem zwischen aktuellem und nächstem Wert ist oder falls elem an letzter Stelle eingefügt werden soll
-                            {
-                                for (int j = myArray.Length - 1; j > k; j--) //Alle Werte rechts von kleinerem Wert nach rechts verschieben
-                                {
-                                    myArray[j] = myArray[j - 1];
-                                    pos = j;
-                                }
-                                break;
-                            }
-                        }
-                        myArray[pos] = elem; //Elem auf Stelle des größeren Wertes setzen
-                        Console.WriteLine("eingefügt");
-                        return true;
-                    }
+                    return false;
                 }
-                Console.WriteLine("irgendwas passt nicht");
-                return false;
             }
         }
 
@@ -132,7 +176,7 @@ namespace AlgoDat
                 {
                     myArray[j] = myArray[j + 1]; //alle Elemente rechts von i werden um eins nach links verschoben
                 }
-                myArray[myArray.GetLength(0) - 1] = 0; //leztes Element im Array wir auf 0 gesetzt
+                myArray[myArray.GetLength(0) - 1] = -1; //leztes Element im Array wir auf 0 gesetzt
                 Console.WriteLine("Element entfernt");
                 return true;
             }
