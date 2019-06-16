@@ -12,12 +12,13 @@ namespace AlgoDat
         {
             public Node left;
             public Node right;
-            public Node parent;
             public int value;
+            public Node parent;
 
-            public Node(int value)
+            public Node(int value, Node parent)
             {
                 this.value = value;
+                this.parent = parent;
             }
 
 
@@ -88,7 +89,7 @@ namespace AlgoDat
         public bool Insert(int elem)
         {
             if (root == null)
-                root = new Node(elem);
+                root = new Node(elem, null);
             else
                 Insert(root, elem);
             return true;
@@ -101,7 +102,7 @@ namespace AlgoDat
                 {
                     if (index.left == null)
                     {
-                        index.left = new Node(elem);
+                        index.left = new Node(elem, index);
                         return;
                     }
                     else
@@ -111,7 +112,7 @@ namespace AlgoDat
                 {
                     if (index.right == null)
                     {
-                        index.right = new Node(elem);
+                        index.right = new Node(elem, index);
                         return;
                     }
                     else
@@ -122,7 +123,7 @@ namespace AlgoDat
         }
 
         /***********************/
-        /********DELETE*********/
+        /********Delete*********/
         /***********************/
         public bool Delete(int elem)
         {
@@ -140,40 +141,82 @@ namespace AlgoDat
             }
             if (index == null) { return false; }
 
-            Node delete = index; //umspeichern damit index später wiederverwertet werden kann / delete ist Node dass gelöscht wird
+            Delete(index);
+            return true;
+        }
+        private void Delete(Node node)
+        {
+            Node parent = node.parent;
 
-            if (delete.left == null && delete.right == null) //Blatt ohne Nachfolger
+            if(node.left == null && node.right == null) //Blatt ohne Nachfolger
             {
-                delete = null;
-                Console.WriteLine("Ich bin hier");
-                return true;
+                if (parent.left == node)
+                    parent.left = null;
+                else parent.right = null;
             }
-            if (delete.left == null || delete.right == null && delete.left != delete.right) //Zu Löschendes Blatt hat nur einen Nachfolger
+            else if (node.left == null || node.right == null && node.left != node.right) //Zu Löschendes Blatt hat nur einen Nachfolger
             {
-                if (delete.left == null)
+                if(node.left == null)
                 {
-                    delete = delete.right;
+                    if (node.right.left == null && node.right.right == null)
+                    {
+                        if (parent.left == node)
+                            parent.left = node.right;
+                        else parent.right = node.right;
+                    }
+                    else //Falls nachfolgendes Element auch nachfolger hat
+                    {
+                        if (parent.left == node)
+                        {
+                            if (node.left != null)
+                                parent.left = node.left;
+                            else parent.left = node.right;
+                        }
+                        else
+                        {
+                            if (node.left != null)
+                                parent.right = node.left;
+                            else parent.right = node.right;
+                        }
+                    }
                 }
-                if (delete.right == null)
+                else if(node.right == null)
                 {
-                    delete = delete.left;
+                    if (node.left.left == null && node.left.right == null)
+                    {
+                        if (parent.left == node)
+                            parent.left = node.left;
+                        else parent.right = node.left;
+                    }
+                    else //Falls nachfolgendes Element auch nachfolger hat
+                    {
+                        if (parent.left == node)
+                        {
+                            if (node.left != null)
+                                parent.left = node.left;
+                            else parent.left = node.right;
+                        }
+                        else
+                        {
+                            if (node.left != null)
+                                parent.right = node.left;
+                            else parent.right = node.right;
+                        }
+                    }
                 }
-                return true;
             }
-
-
-            if (delete.left != null && delete.right != null)
+            else if (node.left != null && node.right != null) //Zu Löschendes Blatt hat zwei Nachfolger
             {
+                Node index = node;
                 index = index.left;
-                while (index.right != null)
+                while (index.right != null) //Am ende steht in index letzes Element
                 {
                     index = index.right;
                 }
-                delete = index;
-                index = null;
-                return true;
+                //Blatt wird zu löschendem Element
+                node.value = index.value;
+                Delete(index);
             }
-            return false;
         }
 
 

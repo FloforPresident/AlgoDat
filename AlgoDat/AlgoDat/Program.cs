@@ -10,6 +10,7 @@ namespace AlgoDat
     {
         static void Main(string[] args)
         {
+
             //Haupt Bibliotheksprogramm
             IDictonary myArray = null;
 
@@ -177,7 +178,7 @@ namespace AlgoDat
 
 
             //BinSearchTree Test
-            //S = {2, 3, 10, 11, 12, 25, 56, 67, 98}
+            //S = { 2, 3, 10, 11, 12, 25, 56, 67, 98}
             //25, 98, 10, 56, 10, 11, 67, 2, 12, 25, 3
             //Console.WriteLine("\n\n--------BinTree--------");
             //BinSearchTree testTree = new BinSearchTree();
@@ -188,12 +189,13 @@ namespace AlgoDat
             //testTree.Insert(10);
             //testTree.Insert(11);
             //testTree.Insert(67);
+            //testTree.Insert(54);
             //testTree.Insert(2);
             //testTree.Insert(12);
             //testTree.Insert(25);
             //testTree.Insert(3);
 
-            ////Console.WriteLine(testTree.Delete(12)); 
+            //Console.WriteLine(testTree.Delete(98));
             //testTree.Print();
 
 
