@@ -8,7 +8,7 @@ namespace AlgoDat
 {
     class AVLTree : BinSearchTree
     {
-        AVLNode root;
+        Node root;
 
         public int Anzahl()
         {
@@ -19,7 +19,7 @@ namespace AlgoDat
                 return 1 + Anzahl(root.left) + Anzahl(root.right);
             }
         }
-        private int Anzahl(BinSearchNode node)
+        private int Anzahl(Node node)
         {
             if (root == null)
                 return 0;
@@ -40,14 +40,14 @@ namespace AlgoDat
 
             return Math.Max(l, r);
         }
-        private int Hoehe(BinSearchNode BinSearchNode)
+        private int Hoehe(Node Node)
         {
             int l = 0, r = 0;
-            if (BinSearchNode.left != null)
-                l = Hoehe(BinSearchNode.left) + 1;
+            if (Node.left != null)
+                l = Hoehe(Node.left) + 1;
 
-            if (BinSearchNode.right != null)
-                r = Hoehe(BinSearchNode.right) + 1;
+            if (Node.right != null)
+                r = Hoehe(Node.right) + 1;
 
             return Math.Max(l, r);
         }
@@ -55,22 +55,22 @@ namespace AlgoDat
         /***********************/
         /********INSERT*********/
         /***********************/
-        public new bool Insert(int elem)
+        public override bool Insert(int elem)
         {
             if (root == null)
             {
-                root = new AVLNode(elem, null);
+                root = new Node(elem, null);
             }
             else
                 Insert(root, elem);
             return true;
         }
-        private void Insert(AVLNode node, int elem)
+        private void Insert(Node node, int elem)
         {
             if (node.value > elem)
             {
                 if (node.left == null)
-                    node.left = new AVLNode(elem, node);
+                    node.left = new Node(elem, node);
                 else
                 {
                     Insert(node.left, elem);
@@ -95,7 +95,7 @@ namespace AlgoDat
             else if (node.value < elem)
             {
                 if (node.right == null)
-                    node.right = new AVLNode(elem, node);
+                    node.right = new Node(elem, node);
                 else
                 {
                     Insert(node.right, elem);
@@ -105,7 +105,7 @@ namespace AlgoDat
                         l = node.left.Hoehe();
                     else l = 0;
                     if (node.right != null)
-                        r = node.left.Hoehe();
+                        r = node.right.Hoehe();
                     else r = 0;
 
                     if (r - l == 2)
@@ -119,26 +119,26 @@ namespace AlgoDat
             }
             else return;
         }
-        private AVLNode rotateWithLeftChild(AVLNode n2)
+        private Node rotateWithLeftChild(Node n2)
         {
-            AVLNode n1 = n2.left;
+            Node n1 = n2.left;
             n2.left = n1.right;
             n1.right = n2;
             return n1;
         }
-        private AVLNode rotateWithRightChild(AVLNode n1)
+        private Node rotateWithRightChild(Node n1)
         {
-            AVLNode n2 = n1.right;
+            Node n2 = n1.right;
             n1.right = n2.left;
             n2.left = n1;
             return n2;
         }
-        private AVLNode doubleRotateWithRightChild(AVLNode n3)
+        private Node doubleRotateWithRightChild(Node n3)
         {
             n3.left = rotateWithRightChild(n3.left);
             return rotateWithLeftChild(n3);
         }
-        private AVLNode doubleRotateWithLeftChild(AVLNode n1)
+        private Node doubleRotateWithLeftChild(Node n1)
         {
             n1.right = rotateWithLeftChild(n1.right);
             return rotateWithRightChild(n1);
@@ -147,13 +147,13 @@ namespace AlgoDat
         /***********************/
         /********Print*********/
         /***********************/
-        public new void Print()
+        public override void Print()
         {
             Console.WriteLine("Choose if: PREORDER = 1, INORDER = 2, POSTORDER = 3");
             int order = Convert.ToInt16(Console.ReadLine());
             if (order == 1 || order == 2 || order == 3)
             {
-                AVLNode.print(root, order);
+                Node.print(root, order);
             }
         }
     }

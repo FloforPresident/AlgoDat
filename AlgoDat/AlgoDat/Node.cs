@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AlgoDat
 {
-    public class BinSearchNode
+    public class Node
     {
-        public BinSearchNode left;
-        public BinSearchNode right;
+        public Node left;
+        public Node right;
         public int value;
-        public BinSearchNode parent;
+        public Node parent;
 
-        public BinSearchNode(int Value, BinSearchNode Parent)
+        public Node(int Value, Node Parent)
         {
             this.value = Value;
             this.parent = Parent;
@@ -23,7 +23,7 @@ namespace AlgoDat
         /***********************/
         /********Print*********/
         /***********************/
-        public static void print(BinSearchNode node, int order)
+        public static void print(Node node, int order)
         {
             if (node == null)
                 return;
@@ -51,6 +51,21 @@ namespace AlgoDat
                     print(node.right, order);
                 Console.WriteLine(node.value);
             }
+        }
+
+        /***********************/
+        /********HOEHE*********/
+        /***********************/
+        public int Hoehe()
+        {
+            int l = 0, r = 0;
+            if (this.left != null)
+                l = this.left.Hoehe() + 1;
+
+            if (this.right != null)
+                r = this.right.Hoehe() + 1;
+
+            return Math.Max(l, r);
         }
     }
 }
