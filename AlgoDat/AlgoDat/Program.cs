@@ -32,7 +32,7 @@ namespace AlgoDat
                 "8. Set sorted array\n" +
                 "\n------------ TREE -----------\n" +
                 "9. Bin tree\n" +
-                "0. AVL tree\n" +
+                "10. AVL tree\n" +
                 "");
             while (libraryRuns)
             {
@@ -101,7 +101,7 @@ namespace AlgoDat
                     myArray = new BinSearchTree();
                     libraryRuns = false;
                 }
-                else if (a == "0")
+                else if (a == "10")
                 {
                     Console.Clear();
                     Console.WriteLine("Sie haben sich für einen AVL tree entschieden");
@@ -327,7 +327,7 @@ namespace AlgoDat
             //Console.WriteLine("=====================");
             //Console.WriteLine("======löschen======");
             //Console.WriteLine("=====================");
-            //Console.WriteLine("")
+            //Console.WriteLine("");
 
             //Console.WriteLine("=8======================");
             //myArray.Delete(8);

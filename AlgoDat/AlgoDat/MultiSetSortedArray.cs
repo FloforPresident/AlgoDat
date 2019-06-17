@@ -8,16 +8,7 @@ namespace AlgoDat
 {
     class MultiSetSortedArray : SupportArray, IMultiSetSorted
     {
-        /// <summary>
-        /// Konstruktor um Array mit -1 als Default zu füllen
-        /// </summary>
-        public MultiSetSortedArray()
-        {
-            for (int i = 0; i < myArray.GetLength(0); i++)
-            {
-                myArray[i] = -1;
-            }
-        }
+        
 
         protected int searchindex; //Hilfsvariable
 
@@ -73,7 +64,7 @@ namespace AlgoDat
             return false;
         }
 
-        public override bool Search(int elem)
+        public bool Search(int elem)
         {
             int min = 0;
             int max = myArray.GetLength(0) - 1;
@@ -133,7 +124,7 @@ namespace AlgoDat
             return false;
         }
 
-        public override bool Insert(int elem)
+        public virtual bool Insert(int elem)
         {
             if (Search(elem))//Element existiert schon einmal
             {
@@ -163,7 +154,7 @@ namespace AlgoDat
             }
         }
 
-        public override bool Delete(int elem)
+        public bool Delete(int elem)
         {
             if (!Search(elem)) //Element ist im Array nicht vorhanden
             {

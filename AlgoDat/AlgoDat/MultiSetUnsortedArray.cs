@@ -9,7 +9,7 @@ namespace AlgoDat
     class MultiSetUnsortedArray : SupportArray, IMultiSet
     {        
         //print in SupportArray
-        public override bool Search(int elem)
+        public bool Search(int elem)
         {
             for (int i = 0; i < myArray.Length; i++)
             {
@@ -35,15 +35,12 @@ namespace AlgoDat
             return -1;
         }
 
-        public override bool Insert(int newElem)
+        public virtual bool Insert(int newElem)
         {
-            HashTabQuadProb findIndex = new HashTabQuadProb(myArray, newElem);
-            int index = findIndex.getHashIndex();
-
-            if (index >= 0 && newElem > 0)
+            int index = SearchIndex(-1);
+            if (index >= 0 && newElem > -1)
             {
                 myArray[index] = newElem;
-                //myArray[i] = newElem;
                 Console.WriteLine("inserted");
                 return true;
             }
@@ -55,7 +52,7 @@ namespace AlgoDat
 
         }
 
-        public override bool Delete(int elem)
+        public bool Delete(int elem)
         {
             if(!Search(elem))
             {
@@ -64,8 +61,8 @@ namespace AlgoDat
             else
             {
                 int i = SearchIndex(elem);
-                myArray[i] = myArray[SearchIndex(0)-1];
-                myArray[SearchIndex(0)-1] = 0;
+                myArray[i] = myArray[SearchIndex(-1)-1];
+                myArray[SearchIndex(-1)-1] = -1;
                 Console.WriteLine("deleted");
                 return true;
             }
