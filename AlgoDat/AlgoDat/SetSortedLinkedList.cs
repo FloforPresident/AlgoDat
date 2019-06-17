@@ -10,7 +10,7 @@ namespace AlgoDat
     {
         public new bool Insert(int elem)
         {
-            if (Search_Help(elem) == true)//element enthalten
+            if (Search(elem) == true)//element enthalten
             {
                 return false;
             }

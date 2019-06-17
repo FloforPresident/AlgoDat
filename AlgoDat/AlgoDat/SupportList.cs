@@ -47,21 +47,6 @@ namespace AlgoDat
             {
                 if (current.element == elem)
                 {
-                    Console.WriteLine("found");
-                    return true;
-                }
-                current = current.next;
-            }
-            Console.WriteLine("not found");
-            return false;
-        }
-        public bool Search_Help(int elem)
-        {
-            LElement current = root;
-            while (current != null)
-            {
-                if (current.element == elem)
-                {
                     return true;
                 }
                 current = current.next;
@@ -73,7 +58,7 @@ namespace AlgoDat
         {
             prev = null;
             LElement current = root;
-            if (Search_Help(elem) == true) // wenn element in Liste existiert
+            if (Search(elem) == true) // wenn element in Liste existiert
             {
                 if (elem == root.element)
                 {
