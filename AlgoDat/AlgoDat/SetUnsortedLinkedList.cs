@@ -8,9 +8,29 @@ namespace AlgoDat
 {
     class SetUnsortedLinkedList : MultiSetUnsortedLinkedList, ISet 
     {
-        public bool Search(int elem){ return false; }
-        public bool Insert(int elem) { return false; }
-        public bool Delete(int elem) { return false; }
-        public void Print() { }
+        
+        public new bool Insert(int elem)
+        {
+            if (!Search_Help(elem))
+            {
+                if (root == null)
+                {
+                    root = new LElement(elem);
+                }
+                else
+                {
+                    LElement current = root;
+                    while (current.next != null)
+                    {
+                        current = current.next;
+                    }
+                    current.next = new LElement(elem);
+                }
+                return true;
+            }
+            return false;
+        }
+        
+        
     }
 }
