@@ -8,17 +8,6 @@ namespace AlgoDat
 {
     class SetSortedArray : MultiSetSortedArray, ISetSorted
     {
-        /// <summary>
-        /// Konstruktor um Array mit -1 als Default zu füllen
-        /// </summary>
-        public SetSortedArray()
-        {
-            for (int i = 0; i < myArray.GetLength(0) - 1; i++)
-            {
-                myArray[i] = -1;
-            }
-        }
-
         public override bool Insert(int elem)
         {
             Search(elem);

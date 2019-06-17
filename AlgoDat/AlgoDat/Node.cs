@@ -13,10 +13,16 @@ namespace AlgoDat
         public int value;
         public Node parent;
 
+        public int prio;
+        Random zufall = new Random();
+
         public Node(int Value, Node Parent)
         {
             this.value = Value;
             this.parent = Parent;
+            left = null;
+            right = null;
+            prio = zufall.Next(0, 100);
         }
 
 

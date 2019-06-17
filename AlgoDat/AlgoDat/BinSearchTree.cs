@@ -9,6 +9,7 @@ namespace AlgoDat
     class BinSearchTree : ISetSorted
     {
         public Node root;
+        public Node current;
 
         /***********************/
         /********SEARCH*********/
@@ -70,7 +71,7 @@ namespace AlgoDat
         /***********************/
         /********Delete*********/
         /***********************/
-        public bool Delete(int elem)
+        public virtual bool Delete(int elem)
         {
             if (root == null) { return false; }
 
