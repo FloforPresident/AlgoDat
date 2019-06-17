@@ -8,7 +8,7 @@ namespace AlgoDat
 {
     class AVLTree : BinSearchTree
     {
-        Node root;
+        //Node root;
 
         public int Anzahl()
         {
@@ -142,19 +142,6 @@ namespace AlgoDat
         {
             n1.right = rotateWithLeftChild(n1.right);
             return rotateWithRightChild(n1);
-        }
-
-        /***********************/
-        /********Print*********/
-        /***********************/
-        public override void Print()
-        {
-            Console.WriteLine("Choose if: PREORDER = 1, INORDER = 2, POSTORDER = 3");
-            int order = Convert.ToInt16(Console.ReadLine());
-            if (order == 1 || order == 2 || order == 3)
-            {
-                Node.print(root, order);
-            }
         }
     }
 }

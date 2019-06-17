@@ -8,12 +8,12 @@ namespace AlgoDat
 {
     class BinSearchTree : ISetSorted
     {
-        Node root;
+        public Node root;
 
         /***********************/
         /********SEARCH*********/
         /***********************/
-        public virtual bool Search(int elem)
+        public bool Search(int elem)
         {
             if (root == null)
                 return false;
