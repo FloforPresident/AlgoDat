@@ -33,6 +33,9 @@ namespace AlgoDat
                 "\n------------ TREE -----------\n" +
                 "9. Bin tree\n" +
                 "10. AVL tree\n" +
+                "\n----------- HASHING ---------\n" +
+                "11. Quadratisch sondiertes Hasharray\n" +
+                "12. Seperat verkettete Liste\n" +
                 "");
             while (libraryRuns)
             {
@@ -108,6 +111,20 @@ namespace AlgoDat
                     myArray = new AVLTree();
                     libraryRuns = false;
                 }
+                else if (a == "11")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für ein quadratisch sondiertes Array entschieden");
+                    myArray = new HashTabQuadProb();
+                    libraryRuns = false;
+                }
+                else if (a == "12")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Sie haben sich für eine seperat verkettete Liste entschieden");
+                    myArray = new HashTabSepChain();
+                    libraryRuns = false;
+                }
                 else
                 {
                     continue;
@@ -163,9 +180,9 @@ namespace AlgoDat
                     }
 
                 }
-                catch
+                catch(Exception e)
                 {
-                    Console.WriteLine("Eingabe muss ein Integer sein");
+                    Console.WriteLine("ERROR: " + e.Message);
                 }
             }
 

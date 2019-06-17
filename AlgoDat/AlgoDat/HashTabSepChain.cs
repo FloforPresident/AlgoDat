@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AlgoDat
 {
-    class HashTabSepChain
+    class HashTabSepChain : MultiSetUnsortedLinkedList
     {
     }
 }

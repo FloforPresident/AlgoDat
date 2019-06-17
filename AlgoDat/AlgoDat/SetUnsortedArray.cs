@@ -12,7 +12,7 @@ namespace AlgoDat
         {
             if (!Search(newElem))
             {
-                int i = SearchIndex(0);
+                int i = SearchIndex(-1);
 
                 if (i >= 0)
                 {

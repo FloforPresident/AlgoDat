@@ -52,7 +52,7 @@ namespace AlgoDat
 
         }
 
-        public bool Delete(int elem)
+        public virtual bool Delete(int elem)
         {
             if(!Search(elem))
             {
@@ -61,8 +61,16 @@ namespace AlgoDat
             else
             {
                 int i = SearchIndex(elem);
-                myArray[i] = myArray[SearchIndex(-1)-1];
-                myArray[SearchIndex(-1)-1] = -1;
+                if(myArray.Contains(-1)) //array is not full
+                {
+                    myArray[i] = myArray[SearchIndex(-1)-1];
+                    myArray[SearchIndex(-1)-1] = -1;               
+                }
+                else //if array is full
+                {
+                    myArray[i] = myArray[myArray.Length - 1];
+                    myArray[myArray.Length - 1] = -1;
+                }
                 Console.WriteLine("deleted");
                 return true;
             }

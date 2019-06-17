@@ -6,40 +6,50 @@ using System.Threading.Tasks;
 
 namespace AlgoDat
 {
-    class HashTabQuadProb 
+    class HashTabQuadProb : MultiSetUnsortedArray
     {
-        int[] thisArray;
-        int value;
-        public HashTabQuadProb(int[] thisArray, int value)
-        {
-            this.thisArray = thisArray;
-            this.value = value;
-        }
-        public int getHashIndex()
+        public override bool Insert(int newElem)
         {
             int trials = 0;
-            while(trials < 10000)
+            while (trials < 100)
             {
-                int index = ((4 * value + 3)+trials*trials) % thisArray.Length;
-                if(thisArray[index] == 0)
+                int index = ((4 * newElem + 3) + trials * Math.Abs(trials)) % myArray.Length;
+                if (myArray[index] == -1)
                 {
-                    return index;
+                    myArray[index] = newElem;
+                    Console.WriteLine("inserted");
+                    return true;
                 }
-                if(trials == 0)
+                if (trials == 0)
                 {
                     trials++;
                 }
-                else if(trials > 0)
+                else if (trials > 0)
                 {
                     trials *= -1;
                 }
-                else
+                else 
                 {
                     trials *= -1;
                     trials++;
                 }
             }
-            return -1;
+            Console.WriteLine("not inserted");
+            return false;
+        }
+        public override bool Delete(int elem)
+        {
+            if (!Search(elem))
+            {
+                return false;
+            }
+            else
+            {
+                int i = SearchIndex(elem);
+                myArray[i] = -1;
+                Console.WriteLine("deleted");
+                return true;
+            }
         }
     }
 }
