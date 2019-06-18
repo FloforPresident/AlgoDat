@@ -15,7 +15,7 @@ namespace AlgoDat
         public int height = 1;
 
         public int prio;
-        Random zufall = new Random();
+        private static Random zufall = new Random();
 
         public Node(int Value, Node Parent)
         {
@@ -23,7 +23,7 @@ namespace AlgoDat
             this.parent = Parent;
             left = null;
             right = null;
-            prio = zufall.Next(0, 100);
+            prio = zufall.Next(100);
         }
 
 

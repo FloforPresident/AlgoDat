@@ -9,6 +9,7 @@ namespace AlgoDat
     class BinSearchTree : ISetSorted
     {
         public Node root;
+        public Node current;
 
         /***********************/
         /********SEARCH*********/
@@ -27,8 +28,14 @@ namespace AlgoDat
                     else if (index.value < elem)
                         index = index.right;
                     else
+                    {
+                        current = index;
+                        Console.WriteLine("gefunden");
                         return true; //index.wert == elem => gefunden
+                    }
+
                 }
+                Console.WriteLine("Objekt nicht vorhanden");
                 return false; //komplett durch und index == null => nicht gefunden
             }
         }
