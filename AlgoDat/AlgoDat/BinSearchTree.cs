@@ -181,7 +181,44 @@ namespace AlgoDat
             int order = Convert.ToInt16(Console.ReadLine());
             if (order == 1 || order == 2 || order == 3)
             {
-                Node.print(root, order);
+                Print(root, order);
+            }
+        }
+        private void Print(Node node, int order)
+        {
+            if (node == null)
+                return;
+            if (order == 1)
+            {
+                if (node.parent != null)
+                {
+                    if (node.parent.right == node)
+                        Console.WriteLine(node.value + " r");
+                    else
+                        Console.WriteLine(node.value + " l");
+                }
+                else Console.WriteLine(node.value + " ich bin eine Wurzel");
+
+                if (node.left != null)
+                    Print(node.left, order);
+                if (node.right != null)
+                    Print(node.right, order);
+            }
+            else if (order == 2)
+            {
+                if (node.left != null)
+                    Print(node.left, order);
+                Console.WriteLine(node.value);
+                if (node.right != null)
+                    Print(node.right, order);
+            }
+            else if (order == 3)
+            {
+                if (node.left != null)
+                    Print(node.left, order);
+                if (node.right != null)
+                    Print(node.right, order);
+                Console.WriteLine(node.value);
             }
         }
     }
