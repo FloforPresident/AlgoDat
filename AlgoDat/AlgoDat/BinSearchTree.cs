@@ -9,7 +9,6 @@ namespace AlgoDat
     class BinSearchTree : ISetSorted
     {
         public Node root;
-        public Node current;
 
         /***********************/
         /********SEARCH*********/

@@ -10,6 +10,7 @@ namespace AlgoDat
     {
         static void Main(string[] args)
         {
+            /*
 
             //Haupt Bibliotheksprogramm
             IDictonary myArray = null;
@@ -184,7 +185,8 @@ namespace AlgoDat
                 {
                     Console.WriteLine("ERROR: " + e.Message);
                 }
-            }
+        }
+        */
 
 
 
@@ -198,27 +200,27 @@ namespace AlgoDat
             //S = { 2, 3, 10, 11, 12, 25, 56, 67, 98}
             //25, 98, 10, 56, 10, 11, 67, 2, 12, 25, 3
             //Console.WriteLine("\n\n--------BinTree--------");
-            //BinSearchTree testTree = new BinSearchTree();
+            //    BinSearchTree testTree = new BinSearchTree();
             //testTree.Insert(25);
-            //testTree.Insert(98);
-            //testTree.Insert(10);
-            //testTree.Insert(56);
-            //testTree.Insert(10);
-            //testTree.Insert(11);
-            //testTree.Insert(67);
-            //testTree.Insert(54);
-            //testTree.Insert(2);
-            //testTree.Insert(12);
-            //testTree.Insert(25);
-            //testTree.Insert(3);
+            //    testTree.Insert(98);
+            //    testTree.Insert(10);
+            //    testTree.Insert(56);
+            //    testTree.Insert(10);
+            //    testTree.Insert(11);
+            //    testTree.Insert(67);
+            //    testTree.Insert(54);
+            //    testTree.Insert(2);
+            //    testTree.Insert(12);
+            //    testTree.Insert(25);
+            //    testTree.Insert(3);
 
-            //Console.WriteLine(testTree.Delete(98));
-            //testTree.Print();
+            //    Console.WriteLine(testTree.Delete(98));
+            //    testTree.Print();
 
-            //AVLTree avlTree = new AVLTree();
-            //avlTree.Insert(63);
-            //avlTree.Insert(34);
-            //avlTree.Insert(2);
+            AVLTree avlTree = new AVLTree();
+            avlTree.Insert(63);
+            avlTree.Insert(34);
+            avlTree.Insert(2);
             //avlTree.Insert(14);
             //avlTree.Insert(54);
             //avlTree.Insert(50);
@@ -227,7 +229,7 @@ namespace AlgoDat
             //avlTree.Insert(68);
             //avlTree.Insert(21);
 
-            //avlTree.Print();
+            avlTree.Print();
 
 
             //Multi Set Sorted Arrays Test

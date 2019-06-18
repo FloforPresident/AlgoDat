@@ -8,53 +8,12 @@ namespace AlgoDat
 {
     class AVLTree : BinSearchTree
     {
-        //Node root;
-
-        public int Anzahl()
+        private int height(Node n)
         {
-            if (root == null)
+            if (n == null)
                 return 0;
-            else
-            {
-                return 1 + Anzahl(root.left) + Anzahl(root.right);
-            }
+            return n.height;
         }
-        private int Anzahl(Node node)
-        {
-            if (root == null)
-                return 0;
-            else
-            {
-                return 1 + Anzahl(node.left) + Anzahl(node.right);
-            }
-        }
-        
-        public int Hoehe()
-        {
-            int l = 0, r = 0;
-            if(root.left != null)
-                l = Hoehe(root.left) + 1;
-
-            if (root.right != null)
-                r = Hoehe(root.right) + 1;
-
-            return Math.Max(l, r);
-        }
-        private int Hoehe(Node Node)
-        {
-            int l = 0, r = 0;
-            if (Node.left != null)
-                l = Hoehe(Node.left) + 1;
-
-            if (Node.right != null)
-                r = Hoehe(Node.right) + 1;
-
-            return Math.Max(l, r);
-        }
-
-        /***********************/
-        /********INSERT*********/
-        /***********************/
         public override bool Insert(int elem)
         {
             if (root == null)
@@ -62,86 +21,88 @@ namespace AlgoDat
                 root = new Node(elem, null);
             }
             else
-                Insert(root, elem);
+                Insert(elem, root);
             return true;
         }
-        private void Insert(Node node, int elem)
+        private void Insert(int elem, Node node)
         {
-            if (node.value > elem)
-            {
-                if (node.left == null)
-                    node.left = new Node(elem, node);
-                else
-                {
-                    Insert(node.left, elem);
-
-                    int r, l;
-                    if (node.left != null)
-                        l = node.left.Hoehe();
-                    else l = 0;
-                    if (node.right != null)
-                        r = node.left.Hoehe();
-                    else r = 0;
-
-                    if (l - r == 2)
-                    {
-                        if (elem - node.left.value < 0)
-                            node = rotateWithLeftChild(node);
-                        else
-                            node = doubleRotateWithRightChild(node);
-                    }
-                }
-            }
-            else if (node.value < elem)
-            {
-                if (node.right == null)
-                    node.right = new Node(elem, node);
-                else
-                {
-                    Insert(node.right, elem);
-
-                    int r, l;
-                    if (node.left != null)
-                        l = node.left.Hoehe();
-                    else l = 0;
-                    if (node.right != null)
-                        r = node.right.Hoehe();
-                    else r = 0;
-
-                    if (r - l == 2)
-                    {
-                        if(elem - node.right.value > 0)
-                            node = rotateWithRightChild(node);
-                        else
-                            node = doubleRotateWithLeftChild(node);
-                    }
-                }
-            }
+            //1. Neues Element Hinzufügen
+            if (elem < node.value)
+                node.left = new Node(elem, node);
+            else if (elem > node.value)
+                node.right = new Node(elem, node);
             else return;
+
+            //2. Höhe von node updaten
+            node.height = Math.Max(height(node.left), height(node.right)) + 1;
+
+            //3. Checken ob node unbalanciert wird
+            int balance = getBalance(node);
+
+            //Wenn unbalanciert gibts 4 Fälle:
+            //Left Left Case
+            // Left Left Case
+            if (balance > 1 && elem < node.left.value)
+                rightRotate(node);
+
+            // Right Right Case
+            if (balance < -1 && elem > node.right.value)
+                leftRotate(node);
+
+            // Left Right Case
+            if (balance > 1 && elem > node.left.value)
+            {
+                node.left = leftRotate(node.left);
+                rightRotate(node);
+            }
+
+            // Right Left Case
+            if (balance < -1 && elem < node.right.value)
+            {
+                node.right = rightRotate(node.right);
+                leftRotate(node);
+            }
         }
-        private Node rotateWithLeftChild(Node n2)
+
+        private Node rightRotate(Node y)
         {
-            Node n1 = n2.left;
-            n2.left = n1.right;
-            n1.right = n2;
-            return n1;
+            Node x = y.left;
+            Node T2 = x.right;
+
+            // Perform rotation
+            x.right = y;
+            y.left = T2;
+
+            // Update heights
+            y.height = Math.Max(height(y.left), height(y.right)) + 1;
+            x.height = Math.Max(height(x.left), height(x.right)) + 1;
+
+            // Return new root
+            return x;
         }
-        private Node rotateWithRightChild(Node n1)
+        private Node leftRotate(Node x)
         {
-            Node n2 = n1.right;
-            n1.right = n2.left;
-            n2.left = n1;
-            return n2;
+            Node y = x.right;
+            Node T2 = y.left;
+
+            // Perform rotation
+            y.left = x;
+            x.right = T2;
+
+            //  Update heights
+            x.height = Math.Max(height(x.left), height(x.right)) + 1;
+            y.height = Math.Max(height(y.left), height(y.right)) + 1;
+
+            // Return new root
+            return y;
         }
-        private Node doubleRotateWithRightChild(Node n3)
+
+        // Get Balance factor of node N
+        private int getBalance(Node N)
         {
-            n3.left = rotateWithRightChild(n3.left);
-            return rotateWithLeftChild(n3);
-        }
-        private Node doubleRotateWithLeftChild(Node n1)
-        {
-            n1.right = rotateWithLeftChild(n1.right);
-            return rotateWithRightChild(n1);
+            if (N == null)
+                return 0;
+            return height(N.left) - height(N.right);
         }
     }
 }

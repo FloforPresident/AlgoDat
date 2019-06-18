@@ -12,6 +12,7 @@ namespace AlgoDat
         public Node right;
         public int value;
         public Node parent;
+        public int height = 1;
 
         public int prio;
         Random zufall = new Random();
@@ -35,7 +36,15 @@ namespace AlgoDat
                 return;
             if (order == 1)
             {
-                Console.WriteLine(node.value);
+                if (node.parent != null)
+                {
+                    if (node.parent.right == node)
+                        Console.WriteLine(node.value + " r");
+                    else
+                        Console.WriteLine(node.value + " l");
+                }
+                else Console.WriteLine(node.value + " ich bin eine Wurzel");
+
                 if (node.left != null)
                     print(node.left, order);
                 if (node.right != null)
@@ -57,21 +66,6 @@ namespace AlgoDat
                     print(node.right, order);
                 Console.WriteLine(node.value);
             }
-        }
-
-        /***********************/
-        /********HOEHE*********/
-        /***********************/
-        public int Hoehe()
-        {
-            int l = 0, r = 0;
-            if (this.left != null)
-                l = this.left.Hoehe() + 1;
-
-            if (this.right != null)
-                r = this.right.Hoehe() + 1;
-
-            return Math.Max(l, r);
         }
     }
 }
