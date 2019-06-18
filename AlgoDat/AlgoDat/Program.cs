@@ -18,7 +18,7 @@ namespace AlgoDat
 
             //which kind of array
             bool libraryRuns = true;
-
+       
             Console.WriteLine("\n---- MULTISET UNSORTED ----" +
                 "\n1. Multiset unsorted list\n" +
                 "2. Multiset unsorted array\n" +
@@ -34,9 +34,10 @@ namespace AlgoDat
                 "\n------------ TREE -----------\n" +
                 "9. Bin tree\n" +
                 "10. AVL tree\n" +
+                "11. Treap\n" + 
                 "\n----------- HASHING ---------\n" +
-                "11. Quadratisch sondiertes Hasharray\n" +
-                "12. Seperat verkettete Liste\n" +
+                "12. Quadratisch sondiertes Hasharray\n" +
+                "13. Seperat verkettete Liste\n" +
                 "");
             while (libraryRuns)
             {
@@ -115,11 +116,18 @@ namespace AlgoDat
                 else if (a == "11")
                 {
                     Console.Clear();
+                    Console.WriteLine("Sie haben sich für einen Treap entschieden");
+                    myArray = new Treap();
+                    libraryRuns = false;
+                }
+                else if (a == "12")
+                {
+                    Console.Clear();
                     Console.WriteLine("Sie haben sich für ein quadratisch sondiertes Array entschieden");
                     myArray = new HashTabQuadProb();
                     libraryRuns = false;
                 }
-                else if (a == "12")
+                else if (a == "13")
                 {
                     Console.Clear();
                     Console.WriteLine("Sie haben sich für eine seperat verkettete Liste entschieden");
@@ -186,7 +194,7 @@ namespace AlgoDat
                     Console.WriteLine("ERROR: " + e.Message);
                 }
         }
-        
+       
 
 
 
@@ -526,7 +534,7 @@ namespace AlgoDat
             //Console.WriteLine("==2===============");
             //testtreap.Insert(2);
 
-            //Console.WriteLine(  );
+            //Console.WriteLine();
             //Console.WriteLine("==Delete===============");
             //Console.WriteLine();
 
