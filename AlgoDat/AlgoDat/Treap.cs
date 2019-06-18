@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AlgoDat
 {
-    class Treap : BinSearchTree, ISetSorted
+    class Treap : BinSearchTree
     {
-        public Node root;
+        public static string type;
         public override bool Insert(int elem)
         {
             Node pointer = current;
@@ -16,7 +16,6 @@ namespace AlgoDat
             if (root == null) //Baum existiert noch nicht
             {
                 base.Insert(elem); //Insert als Blatt wie bei BinSearchTree
-                root = current;
                 return true; //Neues Element ist Wurzel
             }
             else
@@ -38,7 +37,7 @@ namespace AlgoDat
                     {
                         RightRotation(n); //rotiere rechts(n.Parent)
                     }
-                    else
+                    else //ist rechtes Kind
                     {
                         LeftRotation(n); //rotiere links(n.Parent)
                     }
@@ -149,6 +148,12 @@ namespace AlgoDat
 
             Console.WriteLine("Irgendwas stimmt nicht");
             return false;
+        }
+
+        public override void Print()
+        {
+                type = "Treap";
+                base.Print();
         }
     }
 }

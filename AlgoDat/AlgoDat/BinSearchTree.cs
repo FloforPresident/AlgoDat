@@ -49,6 +49,7 @@ namespace AlgoDat
                 root = new Node(elem, null);
             else
                 Insert(root, elem);
+            Console.WriteLine("eingefügt");
             return true;
         }
         private void Insert(Node index, int elem)
@@ -56,7 +57,10 @@ namespace AlgoDat
             if (index.value > elem)
             {
                 if (index.left == null)
+                {
                     index.left = new Node(elem, index);
+                    current = index.left;
+                }
                 else
                 {
                     Insert(index.left, elem);
@@ -65,7 +69,10 @@ namespace AlgoDat
             else if (index.value < elem)
             {
                 if (index.right == null)
+                {
                     index.right = new Node(elem, index);
+                    current = index.right;
+                }
                 else
                 {
                     Insert(index.right, elem);
@@ -183,7 +190,7 @@ namespace AlgoDat
             {
                 Print(root, order);
             }
-        }
+        }   
         private void Print(Node node, int order)
         {
             if (node == null)
@@ -193,11 +200,39 @@ namespace AlgoDat
                 if (node.parent != null)
                 {
                     if (node.parent.right == node)
-                        Console.WriteLine(node.value + " r");
+                    {
+                        if (Treap.type == "Treap")
+                        {
+                            Console.WriteLine(node.value + ", Prio: " + node.prio + " r");
+                        }
+                        else
+                        {
+                            Console.WriteLine(node.value + " r");
+                        }
+                    }
                     else
-                        Console.WriteLine(node.value + " l");
+                    {
+                        if (Treap.type == "Treap")
+                        {
+                            Console.WriteLine(node.value + ", Prio: " + node.prio + " l");
+                        }
+                        else
+                        {
+                            Console.WriteLine(node.value + " l");
+                        }
+                    }
                 }
-                else Console.WriteLine(node.value + " ich bin eine Wurzel");
+                else
+                {
+                    if (Treap.type == "Treap")
+                    {
+                        Console.WriteLine(node.value + ", Prio: " + node.prio + " ich bin eine Wurzel");
+                    }
+                    else
+                    {
+                    Console.WriteLine(node.value + " ich bin eine Wurzel");
+                    }
+                }
 
                 if (node.left != null)
                     Print(node.left, order);
@@ -208,7 +243,14 @@ namespace AlgoDat
             {
                 if (node.left != null)
                     Print(node.left, order);
-                Console.WriteLine(node.value);
+                if (Treap.type == "Treap")
+                {
+                    Console.WriteLine(node.value + ", Prio: " + node.prio);
+                }
+                else
+                {
+                    Console.WriteLine(node.value);
+                }
                 if (node.right != null)
                     Print(node.right, order);
             }
@@ -218,7 +260,14 @@ namespace AlgoDat
                     Print(node.left, order);
                 if (node.right != null)
                     Print(node.right, order);
-                Console.WriteLine(node.value);
+                if (Treap.type == "Treap")
+                {
+                    Console.WriteLine(node.value + ", Prio: " + node.prio);
+                }
+                else
+                {
+                    Console.WriteLine(node.value);
+                }
             }
         }
     }
