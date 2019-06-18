@@ -16,22 +16,41 @@ namespace AlgoDat
         }
         public override bool Insert(int elem)
         {
+            Node node = null;
             if (root == null)
             {
                 root = new Node(elem, null);
+                Console.WriteLine(true);
+                return true;
             }
             else
-                Insert(elem, root);
-            return true;
+            {
+                node = Insert(elem, root, null);
+            }
+
+            if(node == null)
+            {
+                Console.WriteLine(false);
+                return false;
+            }
+            else
+            {
+                Console.WriteLine(true);
+                return true;
+            }
         }
-        private void Insert(int elem, Node node)
+        private Node Insert(int elem, Node node, Node parent)
         {
+            if (node == null)
+                return (new Node(elem, parent));
+
             //1. Neues Element Hinzufügen
             if (elem < node.value)
-                node.left = new Node(elem, node);
+                node.left = Insert(elem, node.left, node);
             else if (elem > node.value)
-                node.right = new Node(elem, node);
-            else return;
+                node.right = Insert(elem, node.right, node);
+            else if (elem == node.value)
+                return null;
 
             //2. Höhe von node updaten
             node.height = Math.Max(height(node.left), height(node.right)) + 1;
@@ -40,28 +59,38 @@ namespace AlgoDat
             int balance = getBalance(node);
 
             //Wenn unbalanciert gibts 4 Fälle:
-            //Left Left Case
-            // Left Left Case
-            if (balance > 1 && elem < node.left.value)
-                rightRotate(node);
 
-            // Right Right Case
-            if (balance < -1 && elem > node.right.value)
-                leftRotate(node);
-
-            // Left Right Case
-            if (balance > 1 && elem > node.left.value)
+            if (elem < node.value)
             {
-                node.left = leftRotate(node.left);
-                rightRotate(node);
+                // Left Left Case
+                if (balance > 1 && elem < node.left.value)
+                {
+                    rightRotate(node);
+                }
+                // Left Right Case
+                else if (balance > 1 && elem > node.left.value)
+                {
+                    node.left = leftRotate(node.left);
+                    rightRotate(node);
+                }
+            }
+            else
+            {
+                // Right Right Case
+                if (balance < -1 && elem > node.right.value)
+                {
+                    leftRotate(node);
+                }
+
+                // Right Left Case
+                else if (balance < -1 && elem < node.right.value)
+                {
+                    node.right = rightRotate(node.right);
+                    leftRotate(node);
+                }
             }
 
-            // Right Left Case
-            if (balance < -1 && elem < node.right.value)
-            {
-                node.right = rightRotate(node.right);
-                leftRotate(node);
-            }
+            return node;
         }
 
         private Node rightRotate(Node y)

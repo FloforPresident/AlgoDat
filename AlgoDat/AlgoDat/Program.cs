@@ -217,7 +217,7 @@ namespace AlgoDat
             //Console.WriteLine(testTree.Delete(98));
             //testTree.Print();
 
-            //Console.WriteLine("\n\n--------AVLTree--------");
+            Console.WriteLine("\n\n--------AVLTree--------");
             AVLTree avlTree = new AVLTree();
             avlTree.Insert(63);
             avlTree.Insert(34);
@@ -491,7 +491,7 @@ namespace AlgoDat
 
             //Console.ReadLine();
 
-            //Console.WriteLine("\n\n--------TreapTest--------");
+            Console.WriteLine("\n\n--------TreapTest--------");
             Treap testtreap = new Treap();
 
             testtreap.Insert(4);
