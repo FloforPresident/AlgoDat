@@ -217,19 +217,19 @@ namespace AlgoDat
             //    Console.WriteLine(testTree.Delete(98));
             //    testTree.Print();
 
-            AVLTree avlTree = new AVLTree();
-            avlTree.Insert(63);
-            avlTree.Insert(34);
-            avlTree.Insert(2);
+            //AVLTree avlTree = new AVLTree();
+            //avlTree.Insert(63);
+            //avlTree.Insert(34);
+            //avlTree.Insert(2);
             //avlTree.Insert(14);
             //avlTree.Insert(54);
             //avlTree.Insert(50);
             //avlTree.Insert(69);
-            //avlTree.Insert(67);
-            //avlTree.Insert(68);
-            //avlTree.Insert(21);
+            ////avlTree.Insert(67);
+            ////avlTree.Insert(68);
+            ////avlTree.Insert(21);
 
-            avlTree.Print();
+            //avlTree.Print();
 
 
             //Multi Set Sorted Arrays Test
@@ -489,6 +489,13 @@ namespace AlgoDat
             //myArray.Print();
 
             //Console.ReadLine();
+
+            Treap testtreap = new Treap();
+
+            testtreap.Insert(4);
+            testtreap.Insert(3);
+            testtreap.Insert(7);
+            testtreap.Print();
 
 
 

@@ -65,9 +65,7 @@
     <Compile Include="SetUnsortedLinkedList.cs" />
     <Compile Include="SupportArray.cs" />
     <Compile Include="SupportList.cs" />
-    <Compile Include="..\..\..\..\..\..\..\..\..\Desktop\Treap.cs">
-      <Link>Treap.cs</Link>
-    </Compile>
+    <Compile Include="Treap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

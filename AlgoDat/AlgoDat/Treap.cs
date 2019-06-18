@@ -23,7 +23,7 @@ namespace AlgoDat
             {
                 base.Insert(elem); //Insert als Blatt wie bei BinSearchTree
             }
-            Heapbedingung(current); 
+            Heapbedingung(current);
 
             return false;
         }
@@ -35,7 +35,7 @@ namespace AlgoDat
                 while (n.parent != null && n != null && n.parent.prio > n.prio)
                 {
                     if (n.value < n.parent.value) //ist linkes Kind
-                    { 
+                    {
                         RightRotation(n); //rotiere rechts(n.Parent)
                     }
                     else
@@ -83,7 +83,7 @@ namespace AlgoDat
             }
         }
 
-        public void RightRotation (Node n)
+        public void RightRotation(Node n)
         {
             Node temp;
             if (n != null)
