@@ -12,7 +12,6 @@ namespace AlgoDat
         public Node right;
         public int value;
         public Node parent;
-        public int height = 1;
 
         public int prio;
         private static Random zufall = new Random();

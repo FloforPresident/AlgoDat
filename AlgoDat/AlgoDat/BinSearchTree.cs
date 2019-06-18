@@ -207,7 +207,7 @@ namespace AlgoDat
                         }
                         else
                         {
-                            Console.WriteLine(node.value + " r");
+                            Console.WriteLine(node.value);
                         }
                     }
                     else
@@ -218,7 +218,7 @@ namespace AlgoDat
                         }
                         else
                         {
-                            Console.WriteLine(node.value + " l");
+                            Console.WriteLine(node.value);
                         }
                     }
                 }
@@ -226,14 +226,13 @@ namespace AlgoDat
                 {
                     if (Treap.type == "Treap")
                     {
-                        Console.WriteLine(node.value + ", Prio: " + node.prio + " ich bin eine Wurzel");
+                        Console.WriteLine(node.value + ", Prio: " + node.prio);
                     }
                     else
                     {
-                    Console.WriteLine(node.value + " ich bin eine Wurzel");
+                        Console.WriteLine(node.value);
                     }
                 }
-
                 if (node.left != null)
                     Print(node.left, order);
                 if (node.right != null)
