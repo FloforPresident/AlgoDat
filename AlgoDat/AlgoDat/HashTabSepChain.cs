@@ -11,21 +11,15 @@ namespace AlgoDat
         class HashNode
         {
             int key;
-            string data;
             HashNode next;
-            public HashNode(int key, string data)
+            public HashNode(int key)
             {
                 this.key = key;
-                this.data = data;
                 next = null;
             }
             public int GetKey()
             {
                 return key;
-            }
-            public string GetData()
-            {
-                return data;
             }
             public void SetNextNode(HashNode obj)
             {
@@ -56,7 +50,7 @@ namespace AlgoDat
                 return false;
             }
 
-            HashNode nObj = new HashNode(key, null);
+            HashNode nObj = new HashNode(key);
             int hash = Hash(key);
             if (table[hash] != null)
             {
