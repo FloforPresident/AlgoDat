@@ -8,7 +8,7 @@ namespace AlgoDat
 {
     abstract class SupportArray
     {
-        public int[] myArray = new int[7/*50*/]; //array declaration
+        public int[] myArray = new int[53]; //array declaration
 
         // Konstruktor um Array mit -1 als Default zu füllen
         public SupportArray()
@@ -23,11 +23,11 @@ namespace AlgoDat
         {
             for (int i = 0; i < myArray.Length; i++)
             {
-                //if(myArray[i] != -1 )
-                //{
+                if (myArray[i] != -1)
+                {
                     Console.Write(myArray[i] + " ");
-                //}
-            }
+                }
+        }
             Console.WriteLine();
         }
     }
