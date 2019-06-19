@@ -10,6 +10,7 @@ namespace AlgoDat
     {
         static void Main(string[] args)
         {
+            
 
             //Haupt Bibliotheksprogramm
             IDictonary myArray = null;
@@ -17,7 +18,7 @@ namespace AlgoDat
 
             //which kind of array
             bool libraryRuns = true;
-
+       
             Console.WriteLine("\n---- MULTISET UNSORTED ----" +
                 "\n1. Multiset unsorted list\n" +
                 "2. Multiset unsorted array\n" +
@@ -33,9 +34,10 @@ namespace AlgoDat
                 "\n------------ TREE -----------\n" +
                 "9. Bin tree\n" +
                 "10. AVL tree\n" +
+                "11. Treap\n" + 
                 "\n----------- HASHING ---------\n" +
-                "11. Quadratisch sondiertes Hasharray\n" +
-                "12. Seperat verkettete Liste\n" +
+                "12. Quadratisch sondiertes Hasharray\n" +
+                "13. Seperat verkettete Liste\n" +
                 "");
             while (libraryRuns)
             {
@@ -114,11 +116,18 @@ namespace AlgoDat
                 else if (a == "11")
                 {
                     Console.Clear();
+                    Console.WriteLine("Sie haben sich für einen Treap entschieden");
+                    myArray = new Treap();
+                    libraryRuns = false;
+                }
+                else if (a == "12")
+                {
+                    Console.Clear();
                     Console.WriteLine("Sie haben sich für ein quadratisch sondiertes Array entschieden");
                     myArray = new HashTabQuadProb();
                     libraryRuns = false;
                 }
-                else if (a == "12")
+                else if (a == "13")
                 {
                     Console.Clear();
                     Console.WriteLine("Sie haben sich für eine seperat verkettete Liste entschieden");
@@ -184,7 +193,8 @@ namespace AlgoDat
                 {
                     Console.WriteLine("ERROR: " + e.Message);
                 }
-            }
+        }
+       
 
 
 
@@ -215,17 +225,18 @@ namespace AlgoDat
             //Console.WriteLine(testTree.Delete(98));
             //testTree.Print();
 
+            //Console.WriteLine("\n\n--------AVLTree--------");
             //AVLTree avlTree = new AVLTree();
             //avlTree.Insert(63);
             //avlTree.Insert(34);
             //avlTree.Insert(2);
-            //avlTree.Insert(14);
-            //avlTree.Insert(54);
-            //avlTree.Insert(50);
-            //avlTree.Insert(69);
-            //avlTree.Insert(67);
-            //avlTree.Insert(68);
-            //avlTree.Insert(21);
+            ////avlTree.Insert(14);
+            ////avlTree.Insert(54);
+            ////avlTree.Insert(50);
+            ////avlTree.Insert(69);
+            //////avlTree.Insert(67);
+            //////avlTree.Insert(68);
+            //////avlTree.Insert(21);
 
             //avlTree.Print();
 
@@ -487,6 +498,65 @@ namespace AlgoDat
             //myArray.Print();
 
             //Console.ReadLine();
+
+            //Console.WriteLine("\n\n--------TreapTest--------");
+            //Treap testtreap = new Treap();
+
+            //Console.WriteLine("==Insert===============");
+            //Console.WriteLine("==4===============");
+            //testtreap.Insert(4);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==3===============");
+            //testtreap.Insert(3);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==7===============");
+            //testtreap.Insert(7);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==20===============");
+            //testtreap.Insert(20);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==5===============");
+            //testtreap.Insert(5);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==18===============");
+            //testtreap.Insert(18);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==2===============");
+            //testtreap.Insert(2);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==2===============");
+            //testtreap.Insert(2);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==Delete===============");
+            //Console.WriteLine();
+
+            //Console.WriteLine();
+            //Console.WriteLine("==2===============");
+            //testtreap.Delete(2);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==30===============");
+            //testtreap.Delete(30);
+
+            //Console.WriteLine();
+            //Console.WriteLine("==7===============");
+            //testtreap.Delete(7);
+
+            //testtreap.Print();
+            //Console.WriteLine();
+            //Console.WriteLine();
+
+            //testtreap.Print();
+
+
 
 
 

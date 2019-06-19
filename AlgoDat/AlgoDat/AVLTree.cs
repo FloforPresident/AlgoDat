@@ -8,53 +8,16 @@ namespace AlgoDat
 {
     class AVLTree : BinSearchTree
     {
-        //Node root;
-
-        public int Anzahl()
-        {
-            if (root == null)
-                return 0;
-            else
-            {
-                return 1 + Anzahl(root.left) + Anzahl(root.right);
-            }
-        }
-        private int Anzahl(Node node)
-        {
-            if (root == null)
-                return 0;
-            else
-            {
-                return 1 + Anzahl(node.left) + Anzahl(node.right);
-            }
-        }
-        
-        public int Hoehe()
+        public int getHeight(Node node)
         {
             int l = 0, r = 0;
-            if(root.left != null)
-                l = Hoehe(root.left) + 1;
-
-            if (root.right != null)
-                r = Hoehe(root.right) + 1;
-
+            if(node != null)
+            {
+            l += getHeight(node.left) + 1;
+            r += getHeight(node.right) + 1;
+            }
             return Math.Max(l, r);
         }
-        private int Hoehe(Node Node)
-        {
-            int l = 0, r = 0;
-            if (Node.left != null)
-                l = Hoehe(Node.left) + 1;
-
-            if (Node.right != null)
-                r = Hoehe(Node.right) + 1;
-
-            return Math.Max(l, r);
-        }
-
-        /***********************/
-        /********INSERT*********/
-        /***********************/
         public override bool Insert(int elem)
         {
             if (root == null)
@@ -62,68 +25,64 @@ namespace AlgoDat
                 root = new Node(elem, null);
             }
             else
+            {
                 Insert(root, elem);
+            }
+            Console.WriteLine("eingefügt");
             return true;
         }
-        private void Insert(Node node, int elem)
+        private void Insert(Node current, int elem)
         {
-            if (node.value > elem)
+            Node node = new Node(elem, current);
+
+            if (node.value < current.value)
             {
-                if (node.left == null)
-                    node.left = new Node(elem, node);
+                if (current.left == null)
+                {
+                    current.left = node;
+                }
                 else
                 {
-                    Insert(node.left, elem);
-
-                    int r, l;
-                    if (node.left != null)
-                        l = node.left.Hoehe();
-                    else l = 0;
-                    if (node.right != null)
-                        r = node.left.Hoehe();
-                    else r = 0;
-
-                    if (l - r == 2)
-                    {
-                        if (elem - node.left.value < 0)
-                            node = rotateWithLeftChild(node);
-                        else
-                            node = doubleRotateWithRightChild(node);
-                    }
+                    Insert(current.left, node.value);
+                    orderTree(current);
                 }
             }
-            else if (node.value < elem)
+            else if (node.value > current.value)
             {
-                if (node.right == null)
-                    node.right = new Node(elem, node);
+                if (current.right == null)
+                {
+                    current.right = node;
+                }
                 else
                 {
-                    Insert(node.right, elem);
-
-                    int r, l;
-                    if (node.left != null)
-                        l = node.left.Hoehe();
-                    else l = 0;
-                    if (node.right != null)
-                        r = node.right.Hoehe();
-                    else r = 0;
-
-                    if (r - l == 2)
-                    {
-                        if(elem - node.right.value > 0)
-                            node = rotateWithRightChild(node);
-                        else
-                            node = doubleRotateWithLeftChild(node);
-                    }
+                    Insert(current.right, node.value);
+                    orderTree(current);
                 }
             }
-            else return;
+            else if (node.value == current.value)
+                return;
         }
+
         private Node rotateWithLeftChild(Node n2)
         {
             Node n1 = n2.left;
             n2.left = n1.right;
             n1.right = n2;
+
+            if (n1.parent.parent == null)
+            {
+                n1.parent = null;
+                root = n1;
+            }
+            else
+            {
+                n1.parent = n1.parent.parent;
+                if (n1.value > n1.parent.value)
+                    n1.parent.right = n1;
+                else n1.parent.left = n1;
+            }
+            n2.parent = n1;
+
             return n1;
         }
         private Node rotateWithRightChild(Node n1)
@@ -131,6 +90,21 @@ namespace AlgoDat
             Node n2 = n1.right;
             n1.right = n2.left;
             n2.left = n1;
+
+            if (n2.parent.parent == null)
+            {
+                n2.parent = null;
+                root = n2;
+            }
+            else
+            {
+                n2.parent = n2.parent.parent;
+                if (n2.value > n2.parent.value)
+                    n2.parent.right = n2;
+                else n2.parent.left = n2;
+            }
+            n1.parent = n2;
+
             return n2;
         }
         private Node doubleRotateWithRightChild(Node n3)
@@ -142,6 +116,54 @@ namespace AlgoDat
         {
             n1.right = rotateWithLeftChild(n1.right);
             return rotateWithRightChild(n1);
+        }
+
+        private Node orderTree(Node current)
+        {
+            int balance = getBalance(current);
+
+            if (balance > 1)
+            {
+                if (current.left.value < current.value)
+                {
+                    current = rotateWithLeftChild(current);
+                }
+                else
+                {
+                    current = doubleRotateWithLeftChild(current);
+                }
+            }
+            else if (balance < -1)
+            {
+                if (current.right.value < current.value)
+                {
+                    current = doubleRotateWithRightChild(current);
+                }
+                else
+                {
+                    current = rotateWithRightChild(current);
+                }
+            }
+
+            return current;
+        }
+
+        // Get Balance factor of node N
+        private int getBalance(Node current)
+        {
+            int l = getHeight(current.left);
+            int r = getHeight(current.right);
+            int b_factor = l - r;
+            return b_factor;
+        }
+
+        public override bool Delete(int number)
+        {
+            base.Delete(number);
+
+            orderTree(root);
+
+            return true;
         }
     }
 }
