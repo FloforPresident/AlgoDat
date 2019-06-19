@@ -8,7 +8,7 @@ namespace AlgoDat
 {
     abstract class SupportArray
     {
-        public int[] myArray = new int[53]; //array declaration
+        public int[] myArray = new int[7]; //array declaration
 
         // Konstruktor um Array mit -1 als Default zu füllen
         public SupportArray()
