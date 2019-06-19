@@ -86,7 +86,7 @@ namespace AlgoDat
         /***********************/
         public virtual bool Delete(int elem)
         {
-            if (root == null) { return false; }
+            if (root == null) { Console.WriteLine("nicht gefunden");  return false; }
 
             Node index = root;
             while (index != null)
@@ -98,9 +98,14 @@ namespace AlgoDat
                 else
                     index = index.left;
             }
-            if (index == null) { return false; }
+            if (index == null)
+            {
+                Console.WriteLine("nicht gefunden");
+                return false;
+            }
 
             Delete(index);
+            Console.WriteLine("Eintrag gelöscht");
             return true;
         }
         private void Delete(Node node)
