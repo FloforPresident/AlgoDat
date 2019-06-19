@@ -9,7 +9,6 @@ namespace AlgoDat
     class BinSearchTree : ISetSorted
     {
         public Node root;
-        public Node current;
 
         /***********************/
         /********SEARCH*********/
@@ -28,14 +27,8 @@ namespace AlgoDat
                     else if (index.value < elem)
                         index = index.right;
                     else
-                    {
-                        current = index;
-                        Console.WriteLine("gefunden");
                         return true; //index.wert == elem => gefunden
-                    }
-
                 }
-                Console.WriteLine("Objekt nicht vorhanden");
                 return false; //komplett durch und index == null => nicht gefunden
             }
         }
@@ -49,7 +42,6 @@ namespace AlgoDat
                 root = new Node(elem, null);
             else
                 Insert(root, elem);
-            Console.WriteLine("eingefügt");
             return true;
         }
         private void Insert(Node index, int elem)
@@ -57,10 +49,7 @@ namespace AlgoDat
             if (index.value > elem)
             {
                 if (index.left == null)
-                {
                     index.left = new Node(elem, index);
-                    current = index.left;
-                }
                 else
                 {
                     Insert(index.left, elem);
@@ -69,10 +58,7 @@ namespace AlgoDat
             else if (index.value < elem)
             {
                 if (index.right == null)
-                {
                     index.right = new Node(elem, index);
-                    current = index.right;
-                }
                 else
                 {
                     Insert(index.right, elem);
@@ -84,9 +70,9 @@ namespace AlgoDat
         /***********************/
         /********Delete*********/
         /***********************/
-        public virtual bool Delete(int elem)
+        public bool Delete(int elem)
         {
-            if (root == null) { Console.WriteLine("nicht gefunden");  return false; }
+            if (root == null) { return false; }
 
             Node index = root;
             while (index != null)
@@ -98,14 +84,9 @@ namespace AlgoDat
                 else
                     index = index.left;
             }
-            if (index == null)
-            {
-                Console.WriteLine("nicht gefunden");
-                return false;
-            }
+            if (index == null) { return false; }
 
             Delete(index);
-            Console.WriteLine("Eintrag gelöscht");
             return true;
         }
         private void Delete(Node node)
@@ -193,85 +174,7 @@ namespace AlgoDat
             int order = Convert.ToInt16(Console.ReadLine());
             if (order == 1 || order == 2 || order == 3)
             {
-                Print(root, order);
-            }
-        }   
-        private void Print(Node node, int order)
-        {
-            if (node == null)
-                return;
-            if (order == 1)
-            {
-                if (node.parent != null)
-                {
-                    if (node.parent.right == node)
-                    {
-                        if (Treap.type == "Treap")
-                        {
-                            Console.WriteLine(node.value + ", Prio: " + node.prio + " r");
-                        }
-                        else
-                        {
-                            Console.WriteLine(node.value);
-                        }
-                    }
-                    else
-                    {
-                        if (Treap.type == "Treap")
-                        {
-                            Console.WriteLine(node.value + ", Prio: " + node.prio + " l");
-                        }
-                        else
-                        {
-                            Console.WriteLine(node.value);
-                        }
-                    }
-                }
-                else
-                {
-                    if (Treap.type == "Treap")
-                    {
-                        Console.WriteLine(node.value + ", Prio: " + node.prio);
-                    }
-                    else
-                    {
-                        Console.WriteLine(node.value);
-                    }
-                }
-                if (node.left != null)
-                    Print(node.left, order);
-                if (node.right != null)
-                    Print(node.right, order);
-            }
-            else if (order == 2)
-            {
-                if (node.left != null)
-                    Print(node.left, order);
-                if (Treap.type == "Treap")
-                {
-                    Console.WriteLine(node.value + ", Prio: " + node.prio);
-                }
-                else
-                {
-                    Console.WriteLine(node.value);
-                }
-                if (node.right != null)
-                    Print(node.right, order);
-            }
-            else if (order == 3)
-            {
-                if (node.left != null)
-                    Print(node.left, order);
-                if (node.right != null)
-                    Print(node.right, order);
-                if (Treap.type == "Treap")
-                {
-                    Console.WriteLine(node.value + ", Prio: " + node.prio);
-                }
-                else
-                {
-                    Console.WriteLine(node.value);
-                }
+                Node.print(root, order);
             }
         }
     }

@@ -13,16 +13,59 @@ namespace AlgoDat
         public int value;
         public Node parent;
 
-        public int prio;
-        private static Random zufall = new Random();
-
         public Node(int Value, Node Parent)
         {
             this.value = Value;
             this.parent = Parent;
-            left = null;
-            right = null;
-            prio = zufall.Next(100);
+        }
+
+
+        /***********************/
+        /********Print*********/
+        /***********************/
+        public static void print(Node node, int order)
+        {
+            if (node == null)
+                return;
+            if (order == 1)
+            {
+                Console.WriteLine(node.value);
+                if (node.left != null)
+                    print(node.left, order);
+                if (node.right != null)
+                    print(node.right, order);
+            }
+            else if (order == 2)
+            {
+                if (node.left != null)
+                    print(node.left, order);
+                Console.WriteLine(node.value);
+                if (node.right != null)
+                    print(node.right, order);
+            }
+            else if (order == 3)
+            {
+                if (node.left != null)
+                    print(node.left, order);
+                if (node.right != null)
+                    print(node.right, order);
+                Console.WriteLine(node.value);
+            }
+        }
+
+        /***********************/
+        /********HOEHE*********/
+        /***********************/
+        public int Hoehe()
+        {
+            int l = 0, r = 0;
+            if (this.left != null)
+                l = this.left.Hoehe() + 1;
+
+            if (this.right != null)
+                r = this.right.Hoehe() + 1;
+
+            return Math.Max(l, r);
         }
     }
 }
